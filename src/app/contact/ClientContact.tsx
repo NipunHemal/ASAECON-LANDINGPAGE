@@ -34,13 +34,13 @@ export default function ClientContact() {
           initial="hidden" animate="visible" variants={staggerContainer}
         >
           <motion.span variants={fadeUp} className="inline-block px-4 py-1.5 bg-white/10 text-white rounded-full text-xs font-bold uppercase tracking-widest mb-6 border border-white/20">
-            Get In Touch
+            Contact Us
           </motion.span>
           <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
-            Let&apos;s start a dialogue about <span className="text-[#ffdea2]">value</span>.
+            Let&apos;s start a conversation about <span className="text-[#ffdea2]">your future</span>.
           </motion.h1>
           <motion.p variants={fadeUp} className="text-lg text-[#d2bcff] max-w-2xl mx-auto leading-relaxed">
-            Whether you&apos;re a curious student or a professional looking to deepen your economic wisdom, we&apos;re here to guide your journey.
+            Whether you&apos;re exploring A/L Economics for the first time or looking for targeted revision, we&apos;re here to guide your journey. ඔබට ඇති ඕනෑම ගැටළුවක් අප වෙත යොමු කරන්න.
           </motion.p>
         </motion.div>
       </section>
@@ -60,9 +60,9 @@ export default function ClientContact() {
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-[#655092] mb-2">Digital Inquiry</h3>
-                  <a href="mailto:concierge@economia-atelier.com" className="text-[#49454f] font-medium hover:underline">concierge@economia-atelier.com</a>
-                  <p className="text-sm text-[#7a7580] mt-1 italic">Our curators respond within 24 hours.</p>
+                  <h3 className="font-bold text-xl text-[#655092] mb-2">Email Inquiries</h3>
+                  <a href="mailto:hello@asa-econ.com" className="text-[#49454f] font-medium hover:underline">hello@asa-econ.com</a>
+                  <p className="text-sm text-[#7a7580] mt-1 italic">Our team responds within 24 hours.</p>
                 </div>
               </div>
             </motion.div>
@@ -73,9 +73,9 @@ export default function ClientContact() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-[#655092] mb-2">Voice Consultation</h3>
-                  <a href="tel:+15553429000" className="text-[#49454f] font-medium hover:underline">+1 (555) 342-9000</a>
-                  <p className="text-sm text-[#7a7580] mt-1 italic">Mon—Fri, 9:00 AM - 6:00 PM EST</p>
+                  <h3 className="font-bold text-xl text-[#655092] mb-2">Call Us (අපට කතා කරන්න)</h3>
+                  <a href="tel:+94771234567" className="text-[#49454f] font-medium hover:underline">+94 77 123 4567</a>
+                  <p className="text-sm text-[#7a7580] mt-1 italic">සතියේ ඕනෑම දිනක උදෑසන 9 සිට සවස 6 දක්වා</p>
                 </div>
               </div>
             </motion.div>
@@ -86,8 +86,8 @@ export default function ClientContact() {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-xl text-[#655092] mb-2">The Studio</h3>
-                  <p className="text-[#49454f] font-medium">782 Madison Avenue, 4th Floor<br/>New York, NY 10065</p>
+                  <h3 className="font-bold text-xl text-[#655092] mb-2">Institute (ආයතනය)</h3>
+                  <p className="text-[#49454f] font-medium">Asa Econ Academy<br/>Colombo, Sri Lanka</p>
                 </div>
               </div>
             </motion.div>
@@ -120,31 +120,31 @@ export default function ClientContact() {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             <div className="mb-10">
-              <h2 className="text-3xl font-bold text-[#1a1c1d] mb-2">Get In Touch</h2>
-              <p className="text-[#49454f]">Share your aspirations or questions with our academic team.</p>
+              <h2 className="text-3xl font-bold text-[#1a1c1d] mb-2">Send Us a Message <br className="hidden md:block"/> <span className="text-xl text-[#655092] font-semibold">(පණිවිඩයක් එවන්න)</span></h2>
+              <p className="text-[#49454f] mt-2">Share your questions or technical issues regarding classes. පංති වේලාවන් හෝ වෙනත් ගැටළු පිළිබඳව විමසන්න.</p>
             </div>
             
             <form className="space-y-8" onSubmit={(e) => e.preventDefault()}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-[#7a7580]">Full Name</label>
-                  <input className="w-full bg-[#f3f3f5] border-none rounded-lg px-4 py-4 focus:ring-2 focus:ring-[#655092] transition-all text-[#1a1c1d] outline-none" placeholder="John Doe" type="text"/>
+                  <input className="w-full bg-[#f3f3f5] border-none rounded-lg px-4 py-4 focus:ring-2 focus:ring-[#655092] transition-all text-[#1a1c1d] outline-none" placeholder="Kamal Perera" type="text"/>
                 </div>
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-[#7a7580]">Email Address</label>
-                  <input className="w-full bg-[#f3f3f5] border-none rounded-lg px-4 py-4 focus:ring-2 focus:ring-[#655092] transition-all text-[#1a1c1d] outline-none" placeholder="john@example.com" type="email"/>
+                  <input className="w-full bg-[#f3f3f5] border-none rounded-lg px-4 py-4 focus:ring-2 focus:ring-[#655092] transition-all text-[#1a1c1d] outline-none" placeholder="kamal@example.com" type="email"/>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <label className="text-xs font-bold uppercase tracking-widest text-[#7a7580]">Area of Interest</label>
+                <label className="text-xs font-bold uppercase tracking-widest text-[#7a7580]">Subject (කාරණය)</label>
                 <div className="relative">
                   <select className="w-full bg-[#f3f3f5] border-none rounded-lg px-4 py-4 focus:ring-2 focus:ring-[#655092] transition-all text-[#49454f] outline-none appearance-none cursor-pointer">
-                    <option>Macroeconomic Theory</option>
-                    <option>Behavioral Economics</option>
-                    <option>Financial Markets</option>
-                    <option>Course Enrollment Inquiry</option>
-                    <option>Other</option>
+                    <option>New Enrollment (නව ලියාපදිංචිවීමකට)</option>
+                    <option>Online Class Issues (ඔන්ලයින් පංති ගැටළු)</option>
+                    <option>Payment Inquiries (ගෙවීම් සම්බන්ධ ගැටළු)</option>
+                    <option>Past Paper Material (ප්‍රශ්න පත්‍ර)</option>
+                    <option>Other (වෙනත්)</option>
                   </select>
                   <div className="absolute right-5 top-1/2 -translate-y-1/2 pointer-events-none text-[#7a7580]">
                     <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -161,7 +161,7 @@ export default function ClientContact() {
               
               <div className="pt-4">
                 <button className="w-full md:w-auto bg-[#fcc030] text-[#6d4f00] font-bold px-12 py-5 rounded-xl text-lg hover:scale-[0.98] transition-all flex items-center justify-center space-x-3 shadow-md shadow-[#fcc030]/20" type="submit">
-                  <span>Send Message</span>
+                  <span>Send Message (යවන්න)</span>
                   <Send className="w-5 h-5" />
                 </button>
               </div>
@@ -183,15 +183,15 @@ export default function ClientContact() {
               <div className="w-10 h-10 bg-[#25D366] rounded-full flex items-center justify-center text-white">
                 <MessageCircle className="w-5 h-5 fill-current text-white" />
               </div>
-              <span className="text-xs font-bold text-[#25D366] uppercase tracking-widest">Real-time Updates</span>
+              <span className="text-xs font-bold text-[#25D366] uppercase tracking-widest">WhatsApp Updates</span>
             </div>
-            <h2 className="text-2xl md:text-3xl font-bold text-[#1a1c1d] mb-4">Join our WhatsApp Insight Channel</h2>
-            <p className="text-[#49454f]">Daily economic nuggets and atelier updates delivered straight to your phone.</p>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1a1c1d] mb-4">Join our WhatsApp Channel <br className="hidden md:block"/> <span className="text-[#25D366] text-xl font-semibold">(අපේ චැනල් එකට එකතු වෙන්න)</span></h2>
+            <p className="text-[#49454f]">Stay informed. පංතියට අදාළ නිවේදන සහ දිනපතා ආර්ථික විද්‍යා කරුණු ඔබගේ දුරකථනයටම ගෙන්වා ගන්න.</p>
           </div>
           
           <div className="flex-shrink-0 relative z-10">
             <button className="bg-[#1a1c1d] text-white px-8 py-4 rounded-full font-bold flex items-center space-x-3 hover:bg-[#655092] transition-colors shadow-md">
-              <span>Subscribe Now</span>
+              <span>Join Channel</span>
               <ArrowRight className="w-5 h-5" />
             </button>
           </div>
