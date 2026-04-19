@@ -7,9 +7,9 @@ export default function Footer() {
     <footer className="bg-slate-50 border-t border-slate-100 py-16">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 text-sm text-slate-500">
         <div className="flex flex-col gap-4">
-          <div className="font-bold text-lg tracking-tight text-primary">Economia Atelier</div>
+          <div className="font-bold text-lg tracking-tight text-primary">ආස Econ</div>
           <p className="max-w-xs leading-relaxed text-slate-500">
-            &copy; 2024 Economia Atelier. Cultivating economic wisdom through curated learning.
+            &copy; 2024 ආස Econ. Cultivating economic wisdom through curated learning.
           </p>
         </div>
 

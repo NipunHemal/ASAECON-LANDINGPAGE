@@ -14,7 +14,7 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-  title: "Economia Atelier",
+  title: "ආස Econ",
   description: "High-quality, accessible & engaging education",
 };
 

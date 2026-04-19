@@ -75,7 +75,7 @@ export default function AboutClient() {
             </motion.span>
 
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-extrabold tracking-tighter text-text-primary leading-[1.1] mb-8">
-              Crafting the <span className="text-primary italic font-serif">Economic Mind</span><br className="hidden md:block"/> හෙට දවස වෙනුවෙන්.
+              Crafting the <span className="text-primary italic font-serif">Economic Mind</span><br className="hidden md:block" /> හෙට දවස වෙනුවෙන්.
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-lg text-text-muted max-w-xl leading-relaxed mb-10">
@@ -102,10 +102,10 @@ export default function AboutClient() {
           >
             <div className="relative w-full max-w-md aspect-square bg-primary/5 rounded-[3rem] overflow-hidden">
               {/* Hero Image */}
-              <img 
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop" 
-                alt="Students collaborating in modern university" 
-                className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-multiply opacity-80" 
+              <img
+                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+                alt="Students collaborating in modern university"
+                className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-multiply opacity-80"
               />
             </div>
 
@@ -210,10 +210,10 @@ export default function AboutClient() {
               {/* Impact Illustration */}
               <div className="bg-primary p-1.5 rounded-[2.5rem] shadow-2xl shadow-primary/10 overflow-hidden transform md:rotate-2 md:scale-95 transition-transform hover:rotate-0 hover:scale-100 duration-500">
                 <div className="w-full aspect-[4/3] rounded-[2.2rem] overflow-hidden bg-slate-200">
-                  <img 
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop" 
-                    alt="Students in a modern seminar" 
-                    className="w-full h-full object-cover" 
+                  <img
+                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop"
+                    alt="Students in a modern seminar"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>

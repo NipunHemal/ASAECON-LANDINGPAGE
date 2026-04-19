@@ -48,7 +48,7 @@ export default function InstructorProfile() {
           >
             <div className="instructor-portrait">
               <Image
-                src="/a.png"
+                src="/student-hero-old.png"
                 alt="Lead Economics Instructor"
                 fill
                 className="object-cover object-top"

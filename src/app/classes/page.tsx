@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import ClassesClient from "./ClassesClient";
 
 export const metadata: Metadata = {
-  title: "All Classes | Economia Atelier",
+  title: "All Classes | ආස Econ",
   description: "Browse all Economics modules — from Microeconomics and Macroeconomic Policy to Behavioral Mechanics and Digital Asset Economics.",
   openGraph: {
-    title: "Econ Theory Modules | Economia Atelier",
+    title: "Econ Theory Modules | ආස Econ",
     description: "Explore our full module catalog — curated by expert faculty for serious scholars.",
     url: "https://economia-atelier.com/classes",
-    siteName: "Economia Atelier",
+    siteName: "ආස Econ",
   },
 };
 
