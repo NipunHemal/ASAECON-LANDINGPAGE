@@ -11,7 +11,7 @@ import Footer from "@/components/Footer";
 import CourseCard, { type CourseCardData } from "@/components/CourseCard";
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
-const FILTERS = ["All Theory", "Micro", "Macro", "Behavioral", "Modern", "Ethics"];
+const FILTERS = ["All Modules", "Micro (ක්ෂුද්‍ර)", "Macro (සාර්ව)", "Banking (බැංකු)", "Revision (පුනරීක්ෂණ)", "Past Papers (ප්‍රශ්න පත්‍ර)"];
 
 interface CourseEntry extends CourseCardData {
   filter: string;
@@ -24,97 +24,97 @@ const COURSES: CourseEntry[] = [
     icon: BarChart2,
     iconColor: "#4C3BCF",
     iconBg: "#EEF0FF",
-    title: "Microeconomic Paradigms",
-    desc: "An exploration into individual decision-making, market structures, and the invisible hand in the digital age.",
-    tag: "Foundational",
+    title: "ක්ෂුද්‍ර ආර්ථික විද්‍යාව (Microeconomics)",
+    desc: "පාරිභෝගික හැසිරීම, වෙළඳපල ව්‍යුහය සහ සම්පත් බෙදාහැරීම පිළිබඳ සම්පූර්ණ න්‍යායාත්මක ආවරණය.",
+    tag: "Theory",
     tagColor: "bg-indigo-50 text-indigo-700",
-    teacher: "Dr. Elena Vance",
-    duration: "12 Weeks",
+    teacher: "A/L Econ Panel",
+    duration: "10 Weeks",
     rating: 4.9,
     reviews: 1243,
-    meta: "12 Weeks",
+    meta: "10 Weeks",
     MetaIcon: Clock,
-    filter: "Micro",
+    filter: "Micro (ක්ෂුද්‍ර)",
   },
   {
     icon: Globe,
     iconColor: "#0EA5E9",
     iconBg: "#E0F4FF",
-    title: "Macroeconomic Policy",
-    desc: "Understanding national income, monetary systems, and the complex dance of global trade and fiscal responsibility.",
-    tag: "Advanced",
+    title: "සාර්ව ආර්ථික විද්‍යාව (Macroeconomics)",
+    desc: "ජාතික ආදායම, ආර්ථික වර්ධනය සහ රජයේ මූල්‍ය ප්‍රතිපත්ති පිළිබඳ ගැඹුරු අධ්‍යයනයක්.",
+    tag: "Theory",
     tagColor: "bg-sky-50 text-sky-700",
-    teacher: "Prof. James Holloway",
-    duration: "15 Modules",
+    teacher: "A/L Econ Panel",
+    duration: "12 Weeks",
     rating: 4.8,
     reviews: 987,
-    meta: "15 Modules",
+    meta: "12 Weeks",
     MetaIcon: Clock,
-    filter: "Macro",
-  },
-  {
-    icon: Brain,
-    iconColor: "#7C5CFC",
-    iconBg: "#F0EDFF",
-    title: "Behavioral Mechanics",
-    desc: "Why do we choose what we choose? Unveiling the psychological biases that drive the global economy.",
-    tag: "Specialized",
-    tagColor: "bg-violet-50 text-violet-700",
-    teacher: "Dr. Priya Nair",
-    duration: "10 Modules",
-    rating: 4.9,
-    reviews: 762,
-    meta: "Intermediate",
-    MetaIcon: Brain,
-    filter: "Behavioral",
+    filter: "Macro (සාර්ව)",
   },
   {
     icon: Coins,
     iconColor: "#F59E0B",
     iconBg: "#FEF3C7",
-    title: "Digital Asset Economics",
-    desc: "Navigating the transition from traditional finance to decentralised protocols and sovereign digital currencies.",
-    tag: "Modern",
+    title: "මුදල් හා බැංකු ක්‍රමය (Money & Banking)",
+    desc: "ශ්‍රී ලංකාවේ මුදල් පද්ධතිය, මහ බැංකුවේ කාර්යයන් සහ පොලී අනුපාත පිළිබඳ පැහැදිලි අවබෝධයක්.",
+    tag: "Banking",
     tagColor: "bg-amber-50 text-amber-700",
-    teacher: "Prof. Alan Chen",
-    duration: "8 Modules",
-    rating: 4.7,
-    reviews: 634,
-    meta: "8 Modules",
+    teacher: "A/L Econ Panel",
+    duration: "5 Weeks",
+    rating: 4.9,
+    reviews: 762,
+    meta: "Banking",
     MetaIcon: Coins,
-    filter: "Modern",
+    filter: "Banking (බැංකු)",
+  },
+  {
+    icon: Brain,
+    iconColor: "#7C5CFC",
+    iconBg: "#F0EDFF",
+    title: "සම්පූර්ණ පුනරීක්ෂණය (Full Revision)",
+    desc: "සියලුම න්‍යාය කොටස් ඉතා කෙටි කාලයකින් නැවත මතක් කරගැනීම සඳහා විශේෂයෙන් සැකසූ පුනරීක්ෂණ මාලාව.",
+    tag: "Revision",
+    tagColor: "bg-violet-50 text-violet-700",
+    teacher: "A/L Econ Panel",
+    duration: "Intensive",
+    rating: 4.9,
+    reviews: 634,
+    meta: "Intensive",
+    MetaIcon: Brain,
+    filter: "Revision (පුනරීක්ෂණ)",
   },
   {
     icon: Leaf,
     iconColor: "#10B981",
     iconBg: "#D1FAE5",
-    title: "Environmental Valuation",
-    desc: "Integrating ecological health into the balance sheet. A study on sustainability and resource management.",
-    tag: "Ethics",
+    title: "ජාත්‍යන්තර වෙළඳාම (International Trade)",
+    desc: "විදේශ විනිමය අනුපාත, ගෙවුම් ශේෂය සහ ජාත්‍යන්තර වෙළඳපල පිළිබඳ ප්‍රායෝගික සාකච්ඡා.",
+    tag: "Exam Prep",
     tagColor: "bg-emerald-50 text-emerald-700",
-    teacher: "Dr. Sasha Williams",
-    duration: "Expert Level",
+    teacher: "A/L Econ Panel",
+    duration: "4 Weeks",
     rating: 4.8,
     reviews: 521,
-    meta: "Expert Level",
+    meta: "Exam Prep",
     MetaIcon: Leaf,
-    filter: "Ethics",
+    filter: "Macro (සාර්ව)",
   },
   {
     icon: TrendingUp,
     iconColor: "#EF4444",
     iconBg: "#FEE2E2",
-    title: "Game Theory & Strategic Insight",
-    desc: "Explore strategic interaction between rational agents and how outcomes emerge from competing incentives.",
+    title: "ප්‍රශ්න පත්‍ර සාකච්ඡාව (Past Papers)",
+    desc: "පසුගිය විභාග ප්‍රශ්න පත්‍ර සහ අනුමාන ප්‍රශ්න පත්‍ර ගැඹුරින් සාකච්ඡා කිරීමෙන් විභාගයට ඉහළම ලකුණක් ලබාගැනීමට.",
     tag: "Advanced",
     tagColor: "bg-red-50 text-red-700",
-    teacher: "Prof. Marco Silva",
-    duration: "10 Modules",
+    teacher: "A/L Econ Panel",
+    duration: "8 Papers",
     rating: 4.9,
     reviews: 890,
-    meta: "10 Modules",
+    meta: "8 Papers",
     MetaIcon: PieChart,
-    filter: "Micro",
+    filter: "Past Papers (ප්‍රශ්න පත්‍ර)",
   },
 ];
 
@@ -130,11 +130,11 @@ const stagger = {
 
 /* ─── Component ─────────────────────────────────────────────────────── */
 export default function ClassesClient() {
-  const [activeFilter, setActiveFilter] = useState("All Theory");
+  const [activeFilter, setActiveFilter] = useState("All Modules");
   const [query, setQuery] = useState("");
 
   const filtered = COURSES.filter((c) => {
-    const matchFilter = activeFilter === "All Theory" || c.filter === activeFilter;
+    const matchFilter = activeFilter === "All Modules" || c.filter === activeFilter;
     const matchQuery =
       c.title.toLowerCase().includes(query.toLowerCase()) ||
       (c.desc ?? "").toLowerCase().includes(query.toLowerCase());
@@ -163,11 +163,11 @@ export default function ClassesClient() {
                 Academic Excellence
               </motion.span>
               <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-extrabold text-text-primary tracking-tighter leading-[1.05] mb-6">
-                ECON{" "}
-                <span className="font-serif italic text-primary font-semibold">Theory</span>
+                All Modules <br />
+                <span className="font-serif italic text-primary font-semibold">සියලුම පාඩම්</span>
               </motion.h1>
               <motion.p variants={fadeUp} className="body-lead max-w-lg mb-8">
-                Master the architectural foundations of modern economic thought. From classical paradigms to behavioural insights, explore the forces that shape global value.
+                Master the foundations of economics. උසස් පෙළ ආර්ථික විද්‍යා විෂය නිර්දේශයේ සියලුම ප්‍රධාන කොටස් මෙහිදී ආවරණය කෙරේ.
               </motion.p>
               <motion.div variants={fadeUp} className="flex items-center gap-4">
                 <div className="flex -space-x-2">
@@ -178,7 +178,7 @@ export default function ClassesClient() {
                   ))}
                 </div>
                 <p className="text-sm text-text-muted font-medium">
-                  Join <span className="text-primary font-bold">1,200+</span> students this semester
+                  Join <span className="text-primary font-bold">2,500+</span> students this year
                 </p>
               </motion.div>
             </motion.div>
@@ -190,7 +190,7 @@ export default function ClassesClient() {
                   <div className="w-64 h-64 rounded-full border-[40px] border-primary" />
                 </div>
                 <div className="relative z-10 grid grid-cols-3 gap-4 p-8 w-full">
-                  {["Micro", "Macro", "Behavioral", "Digital", "Ethics", "Policy"].map((t, i) => (
+                  {["Micro", "Macro", "Trade", "Banking", "Papers", "Theory"].map((t, i) => (
                     <div key={i} className="bg-white/70 backdrop-blur-sm rounded-xl px-3 py-2.5 text-center border border-white shadow-sm">
                       <span className="text-xs font-bold text-text-primary">{t}</span>
                     </div>
@@ -202,8 +202,8 @@ export default function ClassesClient() {
                   <TrendingUp className="w-5 h-5 text-primary" />
                 </div>
                 <div>
-                  <p className="text-[10px] font-bold text-text-muted tracking-wider uppercase">Student ROI</p>
-                  <p className="text-lg font-extrabold text-text-primary">94.2%</p>
+                  <p className="text-[10px] font-bold text-text-muted tracking-wider uppercase">Exam Pass Rate</p>
+                  <p className="text-lg font-extrabold text-text-primary">98.5%</p>
                 </div>
               </div>
               <div className="absolute -top-4 -right-4 bg-gold p-3 rounded-2xl shadow-lg">
@@ -265,12 +265,12 @@ export default function ClassesClient() {
             <div className="w-14 h-14 bg-primary/8 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
               <Sparkles className="w-7 h-7 text-primary" />
             </div>
-            <h3 className="font-bold text-lg text-text-primary mb-3">Request a Topic</h3>
+            <h3 className="font-bold text-lg text-text-primary mb-3">Cant find a topic?</h3>
             <p className="text-sm text-text-muted leading-relaxed mb-6">
-              Interested in a specific economic school of thought? Let our faculty know what you want to learn next.
+              ඔබට අවශ්‍ය අමතර පාඩමක් හෝ Revision එකක් ගැන අපට දන්වන්න. (Request a new module).
             </p>
             <button className="text-primary font-bold text-sm hover:underline flex items-center gap-1 group/btn">
-              Submit Proposal
+              Submit Request
               <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
             </button>
           </motion.article>
@@ -279,7 +279,7 @@ export default function ClassesClient() {
             <div className="col-span-full py-24 text-center text-text-muted">
               <Search className="w-10 h-10 mx-auto mb-4 opacity-30" />
               <p className="text-lg font-medium">No modules match your search.</p>
-              <button className="mt-3 text-primary font-semibold text-sm hover:underline" onClick={() => { setQuery(""); setActiveFilter("All Theory"); }}>
+              <button className="mt-3 text-primary font-semibold text-sm hover:underline" onClick={() => { setQuery(""); setActiveFilter("All Modules"); }}>
                 Clear filters
               </button>
             </div>
@@ -300,11 +300,11 @@ export default function ClassesClient() {
               Limited Time Offer
             </span>
             <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-tight mb-4">
-              Academic Bundle: <br className="hidden md:block" />
-              <span className="font-serif italic font-normal text-gold">The Master Theorist</span>
+              A/L Economy Bundle: <br className="hidden md:block" />
+              <span className="font-serif italic font-normal text-gold">The Master Class</span>
             </h2>
             <p className="text-slate-400 text-lg leading-relaxed">
-              Enroll in all 5 core Econ Theory modules and save 25%. Includes lifetime access to the Atelier Research Library.
+              Enroll in all core Econ Theory modules and Past Paper discussions to save 25%. සියලුම පාඩම් එකට ලබාගන්න.
             </p>
           </div>
 

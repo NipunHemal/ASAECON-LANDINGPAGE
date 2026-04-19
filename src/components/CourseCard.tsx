@@ -5,7 +5,7 @@
 "use client";
 
 import { type ElementType } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { Star, Clock, User, ArrowRight } from "lucide-react";
 
 /* ─── Types ─────────────────────────────────────────────────────────── */
@@ -50,7 +50,7 @@ function StarRating({ rating }: { rating: number }) {
 interface CourseCardProps {
   data: CourseCardData;
   /** Framer Motion variant — pass from parent stagger container */
-  variants?: object;
+  variants?: Variants;
   /** Extra className on the wrapper (e.g. hide on mobile) */
   className?: string;
 }
