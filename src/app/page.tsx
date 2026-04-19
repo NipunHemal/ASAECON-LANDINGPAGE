@@ -10,14 +10,14 @@ export default function Page() {
   return (
     <main className="min-h-screen bg-surface">
       <Navigation />
-      
+
       {/* spacer for fixed nav */}
       <div className="pt-20"></div>
 
       <Hero />
+      <TrustStats />
       <WhyUs />
       <AcademicDomains />
-      <TrustStats />
       <PrivateJournal />
       <Footer />
     </main>

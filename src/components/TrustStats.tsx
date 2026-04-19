@@ -11,9 +11,9 @@ export default function TrustStats() {
 
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
-  
+
   const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
@@ -25,7 +25,7 @@ export default function TrustStats() {
   return (
     <section className="bg-surface-muted py-24 border-t border-slate-100">
       <div className="max-w-7xl mx-auto px-6">
-        <motion.div 
+        <motion.div
           className="max-w-4xl mx-auto text-center mb-20"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
         >
@@ -34,16 +34,15 @@ export default function TrustStats() {
           </p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-0"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
         >
           {stats.map((stat, index) => (
-            <motion.div 
+            <motion.div
               key={index} variants={fadeUp}
-              className={`flex flex-col items-center md:items-start ${
-                index !== 0 ? "md:border-l md:border-slate-200 md:pl-16" : "md:pr-16 md:pl-4"
-              }`}
+              className={`flex flex-col items-center md:items-start ${index !== 0 ? "md:border-l md:border-slate-200 md:pl-16" : "md:pr-16 md:pl-4"
+                }`}
             >
               <div className="text-6xl md:text-7xl font-bold text-primary mb-4 tracking-tighter">
                 {stat.metric}

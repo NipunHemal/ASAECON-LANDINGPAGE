@@ -5,12 +5,12 @@ import { motion } from "framer-motion";
 export default function PrivateJournal() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   return (
     <section className="py-24 max-w-7xl mx-auto px-6">
-      <motion.div 
+      <motion.div
         className="bg-navy rounded-3xl p-10 md:p-20 text-center flex flex-col items-center justify-center relative overflow-hidden"
         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
       >
@@ -20,11 +20,11 @@ export default function PrivateJournal() {
         <p className="text-slate-400 text-lg mb-10 max-w-2xl relative z-10">
           Receive weekly briefings detailing macroeconomic shifts, curated reading materials, and exclusive atelier insights.
         </p>
-        
+
         <form className="flex flex-col sm:flex-row gap-4 w-full max-w-xl relative z-10" onSubmit={(e) => e.preventDefault()}>
-          <input 
-            type="email" 
-            placeholder="Your professional email address" 
+          <input
+            type="email"
+            placeholder="Your professional email address"
             className="flex-1 bg-white/10 border border-white/20 text-white placeholder-slate-400 px-6 py-4 rounded-full focus:outline-none focus:border-gold transition-colors"
             required
           />

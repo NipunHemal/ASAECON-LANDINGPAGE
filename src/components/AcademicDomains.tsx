@@ -6,12 +6,12 @@ import { Globe2, ChevronRight, LineChart, BookOpen, ArrowRight } from "lucide-re
 export default function AcademicDomains() {
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
   };
 
   return (
     <section className="py-24 max-w-7xl mx-auto px-6">
-      <motion.div 
+      <motion.div
         className="flex flex-col md:flex-row justify-between items-end gap-8 mb-12"
         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
       >
@@ -23,7 +23,7 @@ export default function AcademicDomains() {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Large Card */}
-        <motion.div 
+        <motion.div
           className="lg:col-span-2 bg-navy rounded-3xl p-10 md:p-14 flex flex-col justify-between group relative overflow-hidden"
           initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
         >
@@ -43,7 +43,7 @@ export default function AcademicDomains() {
 
         {/* Small Cards Stack */}
         <div className="flex flex-col gap-6">
-          <motion.div 
+          <motion.div
             className="bg-white border border-slate-200 rounded-3xl p-8 flex-1 flex flex-col justify-between hover:border-primary/30 hover:shadow-lg transition-all group"
             initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
           >
@@ -57,8 +57,8 @@ export default function AcademicDomains() {
               </a>
             </div>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="bg-white border border-slate-200 rounded-3xl p-8 flex-1 flex flex-col justify-between hover:border-primary/30 hover:shadow-lg transition-all group"
             initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }}
           >

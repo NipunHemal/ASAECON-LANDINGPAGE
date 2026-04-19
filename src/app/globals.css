@@ -8,9 +8,9 @@
   --color-text-muted: #64748B;
   --color-gold: #F3D39A;
   --color-navy: #0F172A;
-  
-  --font-sans: var(--font-inter), sans-serif;
-  --font-serif: var(--font-playfair), serif;
+
+  --font-sans: var(--font-outfit), sans-serif;
+  --font-serif: var(--font-cormorant), serif;
 }
 
 :root {
