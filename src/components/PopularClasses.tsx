@@ -79,50 +79,8 @@ export default function PopularClasses() {
   };
 
   return (
-    <section className="bg-[#F9FAFB] py-24 md:py-32">
+    <section className="bg-[#F9FAFB] py-10 md:py-16">
       <div className="max-w-7xl mx-auto px-6">
-
-        {/* ─── SECTION 1: About / Stats ─── */}
-        <motion.div
-          className="text-center max-w-3xl mx-auto mb-16"
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-        >
-          <motion.div variants={fadeUp}>
-            <span className="inline-block px-4 py-1.5 bg-emerald-500 text-white text-xs font-bold uppercase tracking-widest rounded-full mb-8">
-              About Us
-            </span>
-          </motion.div>
-
-          <motion.p variants={fadeUp} className="text-lg md:text-xl font-semibold text-[#0F172A] leading-relaxed">
-            We are passionate about empowering learners Worldwide with high-quality, accessible &amp; engaging education. Our mission offering a diverse range of courses.
-          </motion.p>
-        </motion.div>
-
-        {/* Stats row */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-4xl mx-auto mb-16"
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
-        >
-          {stats.map((stat, i) => (
-            <motion.div
-              key={i}
-              variants={fadeUp}
-              className={`flex flex-col items-center text-center px-10 py-8 ${
-                i !== 0 ? "md:border-l border-slate-200" : ""
-              }`}
-            >
-              <div className="text-5xl md:text-6xl font-extrabold text-[#0F172A] tracking-tighter mb-2">
-                {stat.metric}
-              </div>
-              <div className="text-sm text-slate-500 max-w-[160px] leading-relaxed">
-                {stat.label}
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Divider */}
-        <div className="border-t border-slate-200 mb-20" />
 
         {/* ─── SECTION 2: Popular Classes ─── */}
         <motion.div
