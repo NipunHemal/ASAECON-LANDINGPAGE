@@ -70,8 +70,8 @@ export default function WhatsAppCTA() {
                 variants={fadeUp}
                 className="text-3xl md:text-4xl font-extrabold text-[#0F172A] tracking-tight leading-tight mb-4"
               >
-                Join Our Economic Atelier <br className="hidden md:block" />
-                <span className="text-[#25D366]">on WhatsApp</span>
+                Join the ආස Econ <br className="hidden md:block" />
+                <span className="text-[#25D366]">WhatsApp Channel</span>
               </motion.h2>
 
               {/* Sub */}
@@ -79,7 +79,7 @@ export default function WhatsAppCTA() {
                 variants={fadeUp}
                 className="text-slate-500 text-base md:text-lg leading-relaxed mb-8"
               >
-                Receive daily economic insights, class schedules, and exclusive resources directly on your phone — connect with a community of modern scholars.
+                පංතියට අදාළ නිවේදන සහ දිනපතා ආර්ථික විද්‍යා කරුණු ඔබගේ දුරකථනයටම ගෙන්වා ගන්න.
               </motion.p>
 
               {/* Perk list */}
@@ -107,7 +107,7 @@ export default function WhatsAppCTA() {
                   className="inline-flex items-center gap-3 bg-[#25D366] text-white font-bold px-8 py-4 rounded-2xl text-base hover:bg-[#1ebe5d] hover:shadow-lg hover:shadow-[#25D366]/30 hover:-translate-y-0.5 transition-all group"
                 >
                   <WhatsAppIcon className="w-5 h-5" />
-                  Subscribe to Channel
+                  Join the Channel
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </a>
 

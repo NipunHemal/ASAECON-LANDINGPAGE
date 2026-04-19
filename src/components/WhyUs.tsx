@@ -6,29 +6,29 @@ import { Sparkles, Brain, Globe, Users } from "lucide-react";
 const whyUsItems = [
   {
     icon: Sparkles,
-    title: "Curated Excellence",
-    desc: "Expert-led curriculums designed to challenge and elevate your understanding of global economic models.",
+    title: "Curated Syllabus (විශිෂ්ට ඉගැන්වීම් රටාව)",
+    desc: "විෂය නිර්දේශය මුල සිට අගට ඉතා සරලව සහ පැහැදිලිව, ඕනෑම මට්ටමක දරුවෙකුට තේරුම් ගත හැකි පරිදි ආවරණය කිරීම.",
     accent: "#4C3BCF",
     bgAccent: "from-[#4C3BCF]/8 to-transparent",
   },
   {
     icon: Brain,
-    title: "Intellectual Rigor",
-    desc: "We emphasize analytic depth over superficial concepts, ensuring a robust and lasting academic foundation.",
+    title: "Practical Knowledge (ප්‍රායෝගික දැනුම)",
+    desc: "හුදු කටපාඩම් කිරීමෙන් ඔබ්බට ගොස්, න්‍යායාත්මක කරුණු ප්‍රායෝගික ලෝකය හා සම්බන්ධ කරමින් ගැඹුරු අවබෝධයක් ලබා දීම.",
     accent: "#7C5CFC",
     bgAccent: "from-[#7C5CFC]/8 to-transparent",
   },
   {
     icon: Globe,
-    title: "Global Perspective",
-    desc: "Drawing upon multidisciplinary insight to prepare you for diverse and ever-evolving macroeconomic challenges.",
+    title: "Past Paper Discussion (ප්‍රශ්න පත්‍ර සාකච්ඡාව)",
+    desc: "පසුගිය වසරවල ප්‍රශ්න පත්‍ර සහ අනුමාන ප්‍රශ්න පත්‍ර මගින් විභාගයට ඉහළම ලකුණු ලබාගැනීමට මනා පුහුණුවක් ලබා දීම.",
     accent: "#0EA5E9",
     bgAccent: "from-[#0EA5E9]/8 to-transparent",
   },
   {
     icon: Users,
-    title: "Premier Community",
-    desc: "Join an elite cohort of scholars and practitioners dedicated to meaningful economic advancement.",
+    title: "Continuous Evaluation (නිරන්තර ඇගයීම)",
+    desc: "සෑම පාඩමක් අවසානයේම පරීක්ෂණ පවත්වා දරුවන්ගේ මට්ටම නිරන්තරයෙන් ඇගයීමට ලක් කරමින් නිසි මඟ පෙන්වීම.",
     accent: "#F3D39A",
     bgAccent: "from-[#F3D39A]/20 to-transparent",
   },
@@ -37,7 +37,7 @@ const whyUsItems = [
 export default function WhyUs() {
   const fadeUp = {
     hidden: { opacity: 0, y: 24 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" } }
+    visible: { opacity: 1, y: 0, transition: { duration: 0.55, ease: "easeOut" as const } }
   };
 
   const staggerContainer = {
@@ -66,14 +66,13 @@ export default function WhyUs() {
               The Methodology
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0F172A] tracking-tight leading-[1.08]">
-              Why the{" "}
-              <span className="font-serif italic font-normal text-[#4C3BCF]">Atelier?</span>
+              Why choose{" "}
+              <span className="font-serif italic font-normal text-[#4C3BCF]">ආස Econ ?</span>
             </h2>
           </motion.div>
 
           <motion.p variants={fadeUp} className="text-slate-500 text-lg leading-relaxed max-w-md lg:text-right border-r-0 lg:border-r-2 lg:border-[#F3D39A] lg:pr-6">
-            We believe authentic economic insight requires both historical perspective and 
-            modern analytical tools. Our approach strips away the superficial.
+            We believe authentic economic insight requires both historical perspective and modern analytical tools. ආර්ථික විද්‍යාව යනු හුදෙක් විෂයයක් පමණක් නොව එය ලෝකය දකින කවුළුවකි.
           </motion.p>
         </motion.div>
 

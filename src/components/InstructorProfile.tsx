@@ -8,17 +8,17 @@ const skills = [
   {
     Icon: GraduationCap,
     title: "Qualified Educator",
-    desc: "Experienced A/L Economics teacher with deep expertise in the national curriculum and modern analytic concepts.",
+    desc: "උසස් පෙළ ආර්ථික විද්‍යා විෂය පිළිබඳ මනා පළපුරුද්දක් සහිත, ජාතික විෂය නිර්දේශය පිළිබඳ පුළුල් දැනුමක් ඇති ගුරුවරයෙකි.",
   },
   {
     Icon: BookOpen,
-    title: "Bilingual Teaching",
-    desc: "Classes conducted in both English and Sinhala mediums to ensure every student can learn effectively.",
+    title: "Bilingual Classes",
+    desc: "සිංහල හා ඉංග්‍රීසි මාධ්‍ය දෙකෙන්ම පංති පැවැත්වෙන අතර, සෑම දරුවෙකුටම විෂය කාරණා මනාව අවබෝධ වන පරිදි ඉගැන්වීම් සිදු කෙරේ.",
   },
   {
     Icon: Clock,
     title: "Flexible Learning",
-    desc: "Both online and physical class options available, making quality education accessible island-wide.",
+    desc: "ඔන්ලයින් (Online) මෙන්ම භෞතික (Physical) පංති පහසුකම් ද සහිත බැවින්, දිවයින පුරා සිටින දරුවන්ට උසස් මට්ටමේ අධ්‍යාපනයක් ලබා ගැනීමට අවස්ථාව සලසා ඇත.",
   },
 ];
 
@@ -69,7 +69,7 @@ export default function InstructorProfile() {
           >
             {/* Eyebrow — uses global accent colour token */}
             <motion.p variants={fadeUp} className="eyebrow-text-accent mb-4">
-              About The Instructor
+              About the Instructor
             </motion.p>
 
             {/* Headline */}
@@ -80,11 +80,9 @@ export default function InstructorProfile() {
 
             {/* Biography */}
             <motion.p variants={fadeUp} className="body-lead max-w-xl">
-              Our lead instructor is a dedicated{" "}
-              <strong className="text-text-primary font-semibold">A/L Economics specialist</strong>{" "}
-              who has guided thousands of students through Sri Lanka&apos;s national Economics curriculum.
-              With a passion for making complex theory accessible, he combines historical perspective
-              with practical analytical tools to ensure students truly grasp the subject.
+              අපගේ ප්‍රධාන ගුරුවරයා කැපවීමෙන් යුත්{" "}
+              <strong className="text-text-primary font-semibold">උසස් පෙළ ආර්ථික විද්‍යා විශේෂඥයෙක්</strong>{" "}
+              වන අතර ඔහු මේ වන විට සිසුන් දහස් ගණනකට ජාතික ආර්ථික විද්‍යා විෂය නිර්දේශය සාර්ථකව උගන්වා ඇත. සංකීර්ණ න්‍යායන් සරලව ඉගැන්වීම කෙරෙහි ඔහු දක්වන උනන්දුව කැපී පෙනේ.
             </motion.p>
 
             {/* Thin divider */}

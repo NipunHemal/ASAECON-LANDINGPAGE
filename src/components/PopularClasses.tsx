@@ -101,14 +101,14 @@ export default function PopularClasses() {
           <motion.div variants={fadeUp}>
             <span className="eyebrow-badge mb-5">
               <span className="eyebrow-badge-dot" />
-              Curriculum
+              Our Curriculum
             </span>
           </motion.div>
           <motion.h2 variants={fadeUp} className="heading-xl tracking-tight mb-4">
-            Popular Classes
+            Popular Classes & Modules
           </motion.h2>
           <motion.p variants={fadeUp} className="body-lead max-w-xl mx-auto">
-            A selection of our most requested and highly-rated curriculum, curated by expert faculty.
+            අපගේ සිසුන් වඩාත්ම කැමති සහ ඉහළම ශ්‍රේණිගත කිරීම් සහිත පාඩම් පෙළක් මෙහි දැක්වේ.
           </motion.p>
         </motion.div>
 
@@ -140,7 +140,7 @@ export default function PopularClasses() {
             href="/classes"
             className="inline-flex items-center gap-2 text-primary font-bold text-sm border-b-2 border-primary/30 pb-0.5 hover:border-primary transition-colors group"
           >
-            Browse all courses
+            Browse all modules / සියලුම පාඩම් බලන්න
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </a>
         </motion.div>

@@ -28,7 +28,7 @@ export default function Hero() {
           initial="hidden" animate="visible" variants={staggerContainer}
         >
           <motion.div variants={fadeUp} className="text-xs font-bold tracking-widest text-slate-500 uppercase">
-            VIHAGA — The Econ Academy
+            ASA ECON — The Premium Econ Academy
           </motion.div>
 
           <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-bold tracking-tighter text-navy leading-[1.1]">
@@ -38,7 +38,7 @@ export default function Hero() {
           </motion.h1>
 
           <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
-            Navigate the complexities of modern economics through an intuitive, curated learning environment.
+            Master A/L Economics with Sri Lanka&apos;s leading educator. නවීන ආර්ථික විද්‍යාවේ සංකීර්ණතා ඉතා සරලව.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6 pt-4">

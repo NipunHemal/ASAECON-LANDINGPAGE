@@ -15,21 +15,21 @@ export default function PrivateJournal() {
         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp}
       >
         <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight relative z-10">
-          Access the Curator&apos;s <span className="font-serif italic text-gold font-normal">Private Journal</span>
+          Subscribe to our <span className="font-serif italic text-gold font-normal">Private Journal</span>
         </h2>
         <p className="text-slate-400 text-lg mb-10 max-w-2xl relative z-10">
-          Receive weekly briefings detailing macroeconomic shifts, curated reading materials, and exclusive atelier insights.
+          Econ ලෝකයේ නවතම තොරතුරු සහ විශේෂිත පාඩම් සටහන් සතිපතා ඔබගේ විද්‍යුත් තැපෑලට ලබා ගන්න.
         </p>
 
         <form className="flex flex-col sm:flex-row gap-4 w-full max-w-xl relative z-10" onSubmit={(e) => e.preventDefault()}>
           <input
             type="email"
-            placeholder="Your professional email address"
+            placeholder="Your Email Address"
             className="flex-1 bg-white/10 border border-white/20 text-white placeholder-slate-400 px-6 py-4 rounded-full focus:outline-none focus:border-gold transition-colors"
             required
           />
           <button type="submit" className="bg-gold text-navy font-bold px-8 py-4 rounded-full hover:bg-[#eac486] transition-colors whitespace-nowrap shadow-sm">
-            Join Now
+            Subscribe
           </button>
         </form>
       </motion.div>
