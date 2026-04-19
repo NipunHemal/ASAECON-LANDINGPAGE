@@ -1,13 +1,16 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-primary: #4C3BCF;
-  --color-surface: #FFFFFF;
-  --color-surface-muted: #F8FAFC;
-  --color-text-primary: #0F172A;
-  --color-text-muted: #64748B;
-  --color-gold: #F3D39A;
-  --color-navy: #0F172A;
+  --color-primary:        #4C3BCF;
+  --color-primary-dim:    #3d2fb5;
+  --color-surface:        #FFFFFF;
+  --color-surface-muted:  #F8FAFC;
+  --color-text-primary:   #0F172A;
+  --color-text-muted:     #64748B;
+  --color-gold:           #F3D39A;
+  --color-navy:           #0F172A;
+  --color-accent:         #F97316;   /* site accent / orange for instructor highlights */
+  --color-accent-dim:     #FFF7ED;   /* orange-50 equivalent */
 
   --font-sans: var(--font-outfit), sans-serif;
   --font-serif: var(--font-cormorant), serif;
@@ -16,4 +19,66 @@
 :root {
   background-color: var(--color-surface);
   color: var(--color-text-primary);
+}
+
+@layer components {
+  /* ── Shared section shell ─────────────────────────────────── */
+  .section-base {
+    @apply bg-surface py-24 md:py-32 border-t border-slate-100;
+  }
+  .section-inner {
+    @apply max-w-7xl mx-auto px-6;
+  }
+
+  /* ── Eyebrow badge (reusable across sections) ─────────────── */
+  .eyebrow-badge {
+    @apply inline-flex items-center gap-2 px-3.5 py-1.5
+           bg-surface-muted text-text-muted rounded-full
+           text-xs font-bold uppercase tracking-widest
+           border border-slate-200 shadow-sm;
+  }
+  .eyebrow-badge-dot {
+    @apply w-2 h-2 rounded-full bg-primary;
+  }
+  .eyebrow-accent {       /* orange dot variant for instructor */
+    @apply w-2 h-2 rounded-full bg-accent;
+  }
+  .eyebrow-text-accent {
+    @apply text-sm font-bold tracking-widest text-accent uppercase;
+  }
+
+  /* ── Section headings ─────────────────────────────────────── */
+  .heading-xl {
+    @apply text-4xl lg:text-5xl font-extrabold text-text-primary leading-tight;
+  }
+  .heading-lg {
+    @apply text-3xl md:text-4xl font-bold text-text-primary tracking-tight leading-tight;
+  }
+  .body-lead {
+    @apply text-lg text-text-muted leading-relaxed;
+  }
+
+  /* ── Instructor portrait ──────────────────────────────────── */
+  .instructor-portrait {
+    @apply relative aspect-[4/5] w-full rounded-3xl overflow-hidden
+           shadow-xl shadow-slate-200/60;
+  }
+
+  /* ── Skill card ───────────────────────────────────────────── */
+  .skill-card {
+    @apply flex flex-col items-start;
+  }
+  .skill-icon-wrap {
+    @apply w-10 h-10 rounded-full flex items-center justify-center mb-4
+           bg-accent-dim hover:bg-orange-100 transition-colors;
+  }
+  .skill-icon {
+    @apply w-5 h-5 text-accent;
+  }
+  .skill-title {
+    @apply text-base font-bold text-text-primary mb-2;
+  }
+  .skill-desc {
+    @apply text-sm text-text-muted leading-relaxed;
+  }
 }
