@@ -67,7 +67,7 @@ export default function Hero() {
               src="/student-hero.png"
               alt="Student learning"
               fill
-              className="object-contain z-10"
+              className="object-contain z-10 scale-125"
               priority
             />
           </div>

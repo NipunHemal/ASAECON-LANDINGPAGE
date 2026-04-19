@@ -15,11 +15,11 @@ export default function Page() {
       <Navigation />
 
       {/* spacer for fixed nav */}
-      <div className="pt-[72px]"></div>
+      <div className="pt-[42px]"></div>
 
       <Hero />
       <WhyUs />
-      <AcademicDomains />
+      {/* <AcademicDomains /> */}
       {/* <TrustStats /> */}
       <PopularClasses />
       <WhatsAppCTA />
