@@ -22,12 +22,11 @@ export default function Navigation() {
         </div>
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
           {links.map((link) => (
-            <Link 
-              key={link.label} 
+            <Link
+              key={link.label}
               href={link.href}
-              className={`hover:text-primary transition-colors pb-1 ${
-                pathname === link.href ? "text-primary border-b-2 border-primary font-semibold" : ""
-              }`}
+              className={`hover:text-primary transition-colors pb-1 ${pathname === link.href ? "text-primary border-b-2 border-primary font-semibold" : ""
+                }`}
             >
               {link.label}
             </Link>
