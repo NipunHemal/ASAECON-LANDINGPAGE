@@ -4,6 +4,7 @@ import WhyUs from "@/components/WhyUs";
 import AcademicDomains from "@/components/AcademicDomains";
 import TrustStats from "@/components/TrustStats";
 import PopularClasses from "@/components/PopularClasses";
+import InstructorProfile from "@/components/InstructorProfile";
 import PrivateJournal from "@/components/PrivateJournal";
 import Footer from "@/components/Footer";
 
@@ -18,8 +19,9 @@ export default function Page() {
       <Hero />
       <WhyUs />
       <AcademicDomains />
-      <TrustStats />
+      {/* <TrustStats /> */}
       <PopularClasses />
+      <InstructorProfile />
       <PrivateJournal />
       <Footer />
     </main>
