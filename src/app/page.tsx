@@ -4,6 +4,7 @@ import WhyUs from "@/components/WhyUs";
 import AcademicDomains from "@/components/AcademicDomains";
 import TrustStats from "@/components/TrustStats";
 import PopularClasses from "@/components/PopularClasses";
+import WhatsAppCTA from "@/components/WhatsAppCTA";
 import InstructorProfile from "@/components/InstructorProfile";
 import PrivateJournal from "@/components/PrivateJournal";
 import Footer from "@/components/Footer";
@@ -21,6 +22,7 @@ export default function Page() {
       <AcademicDomains />
       {/* <TrustStats /> */}
       <PopularClasses />
+      <WhatsAppCTA />
       <InstructorProfile />
       <PrivateJournal />
       <Footer />
