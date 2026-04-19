@@ -12,12 +12,12 @@ export default function Page() {
       <Navigation />
 
       {/* spacer for fixed nav */}
-      <div className="pt-20"></div>
+      <div className="pt-10"></div>
 
       <Hero />
-      <TrustStats />
       <WhyUs />
       <AcademicDomains />
+      <TrustStats />
       <PrivateJournal />
       <Footer />
     </main>
