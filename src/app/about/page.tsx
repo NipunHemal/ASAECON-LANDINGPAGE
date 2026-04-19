@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import AboutClient from "./AboutClient";
 
 export const metadata: Metadata = {
-  title: "About Us | Economia Atelier",
-  description: "Economia Atelier was founded on the belief that economics isn't just a subject—it's a lens to view the world. We've created a scholarly sanctuary where complex theories meet creative application.",
+  title: "About Us | ආස Econ",
+  description: "\"ආස Econ\" ආරම්භ වූයේ ආර්ථික විද්‍යාව යනු හුදෙක් විභාගයක් සමත් වීම සඳහා පමණක් නොව, ලෝකය දැකීමේ කවුළුවක් බව පෙන්වා දීමේ අරමුණෙනි.",
   openGraph: {
-    title: "About Us | Economia Atelier",
-    description: "Economia Atelier was founded on the belief that economics isn't just a subject—it's a lens to view the world. Join 2,500+ students navigating the global flow.",
-    url: "https://economia-atelier.com/about",
-    siteName: "Economia Atelier",
+    title: "About Us | ආස Econ",
+    description: "සංකීර්ණ න්‍යායන් ඉතා සරලව ප්‍රායෝගිකව උගන්වන ශ්‍රී ලංකාවේ ප්‍රමුඛතම ආර්ථික විද්‍යා පංතියයි.",
+    url: "https://asa-econ.com/about",
+    siteName: "ආස Econ",
   },
 };
 

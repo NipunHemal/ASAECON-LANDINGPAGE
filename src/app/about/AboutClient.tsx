@@ -25,25 +25,25 @@ const scaleUp = {
 /* ─── Tutors Data ───────────────────────────────────────────────────── */
 const TUTORS = [
   {
-    name: "Dr. Helena Vance",
-    role: "Macro-Economic Strategy",
-    desc: "With 15 years at the World Bank, Helena brings real-world geopolitical insights to our curriculum.",
+    name: "Dr. Nipun Hemal",
+    role: "Lead Instructor (ප්‍රධාන දේශක)",
+    desc: "With years of proven teaching excellence, he seamlessly guides students to top A/L results. දිවයිනේ ප්‍රමුඛතම ආර්ථික විද්‍යා දේශක.",
     img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
     color: "bg-[#4C3BCF]/20",
     offset: false,
   },
   {
     name: "Prof. Julian Thorne",
-    role: "Behavioral Economics",
-    desc: "Julian explores the psychology behind the numbers, making theory feel deeply human and relatable.",
+    role: "Practical Training (ප්‍රායෝගික පුහුණුව)",
+    desc: "Bridges the gap between complex theory and the real world. සංකීර්ණ ආර්ථික විද්‍යා සිද්ධාන්ත ප්‍රායෝගික ජීවිතයට සම්බන්ද කිරීමේ විශේෂඥයෙකි.",
     img: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
     color: "bg-[#F3D39A]/40",
     offset: true,
   },
   {
     name: "Sarah Jenkins, CFA",
-    role: "Financial Markets",
-    desc: "A bridge between academia and Wall Street, Sarah translates market volatility into actionable learning.",
+    role: "Paper Supervision (ප්‍රශ්නපත්‍ර අධීක්ෂණ)",
+    desc: "Master exam techniques with deep analysis. පසුගිය ප්‍රශ්න පත්‍ර සහ අනුමාන ප්‍රශ්න පත්‍ර හරහා විභාගයට ඉහළම ලකුණක් ලබාගැනීමට සිසුන්ව මෙහෙයවයි.",
     img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=600&auto=format&fit=crop",
     color: "bg-[#0EA5E9]/20",
     offset: false,
@@ -71,15 +71,15 @@ export default function AboutClient() {
             initial="hidden" animate="visible" variants={stagger}
           >
             <motion.span variants={fadeUp} className="text-xs tracking-[0.2em] text-primary font-bold uppercase mb-4 block">
-              Our Origin Story
+              Our Story (අපගේ කතාව)
             </motion.span>
 
             <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-extrabold tracking-tighter text-text-primary leading-[1.1] mb-8">
-              Crafting the <span className="text-primary italic font-serif">Economic Mind</span> of Tomorrow.
+              Crafting the <span className="text-primary italic font-serif">Economic Mind</span><br className="hidden md:block"/> හෙට දවස වෙනුවෙන්.
             </motion.h1>
 
             <motion.p variants={fadeUp} className="text-lg text-text-muted max-w-xl leading-relaxed mb-10">
-              Economia Atelier was founded on the belief that economics isn&apos;t just a subject—it&apos;s a lens to view the world. We&apos;ve created a scholarly sanctuary where complex theories meet creative application.
+              Economia Atelier is Sri Lanka&apos;s premium economics class. ආර්ථික විද්‍යාව යනු හුදෙක් විභාගයක් සමත් වීම සඳහා පමණක් නොව, ලෝකය දැකීමේ කවුළුවක් බව පෙන්වා දීම අපගේ අරමුණයි.
             </motion.p>
 
             <motion.div variants={fadeUp} className="flex items-center gap-6">
@@ -91,7 +91,7 @@ export default function AboutClient() {
                 ))}
               </div>
               <p className="text-sm font-medium text-text-muted italic">
-                Join 2,500+ students navigating the global flow.
+                Join 2,500+ students navigating the global flow. (සිසුන් 2,500+ ට අධික පිරිසක් සමගින්)
               </p>
             </motion.div>
           </motion.div>
@@ -124,15 +124,15 @@ export default function AboutClient() {
           >
             <motion.div variants={fadeUp} className="max-w-2xl">
               <span className="text-xs tracking-[0.2em] text-primary font-bold uppercase mb-4 block">
-                The Guiding Minds
+                The Guiding Minds (අපගේ ආචාර්ය මණ්ඩලය)
               </span>
               <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight text-text-primary">
-                Meet Our Master Tutors
+                Meet Our Expert Faculty
               </h2>
             </motion.div>
             <motion.div variants={fadeUp} className="hidden md:block">
               <p className="text-text-muted font-medium max-w-xs italic text-right">
-                "The best teacher is not the one who knows the most, but the one who inspires the most."
+                &quot;The best teacher is not the one who knows the most, but the one who inspires the most.&quot;
               </p>
             </motion.div>
           </motion.div>
@@ -178,24 +178,24 @@ export default function AboutClient() {
               initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
             >
               <motion.h2 variants={fadeUp} className="text-4xl md:text-5xl font-extrabold mb-6 leading-tight text-text-primary">
-                Measuring Impact <br />
-                <span className="text-primary italic font-serif">Beyond the Classroom.</span>
+                Our Results <br />
+                <span className="text-primary italic font-serif">(අපගේ ප්‍රතිඵල)</span>
               </motion.h2>
               <motion.p variants={fadeUp} className="text-text-muted mb-12 max-w-lg text-lg leading-relaxed">
-                We don&apos;t just teach economics; we foster success. Our students consistently outperform national averages in both comprehension and career advancement.
+                We don&apos;t just teach economics; we foster success. අපගේ අරමුණ හුදෙක් විභාගය සමත් කරවීම පමණක් නොව, විෂය පිළිබඳ මනා අවබෝධයක් ඇති දරුවන් පිරිසක් සමාජයට දායාද කිරීමයි.
               </motion.p>
 
               <motion.div variants={fadeUp} className="grid grid-cols-2 gap-6 lg:gap-8">
                 <div className="p-8 rounded-[2rem] bg-surface-muted border border-slate-100 flex flex-col justify-center transition-transform hover:-translate-y-1 duration-300">
                   <Users className="text-primary mb-4 w-8 h-8" />
                   <div className="text-4xl lg:text-5xl font-black text-text-primary mb-2 tracking-tighter">1,200+</div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-text-muted">Active Students</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-text-muted">Active Students (සක්‍රීය සිසුරු දරුවන්)</div>
                 </div>
 
                 <div className="p-8 rounded-[2rem] bg-gold/10 border border-gold/20 flex flex-col justify-center transition-transform hover:-translate-y-1 duration-300">
                   <Verified className="text-[#B45309] mb-4 w-8 h-8" />
                   <div className="text-4xl lg:text-5xl font-black text-[#B45309] mb-2 tracking-tighter">98%</div>
-                  <div className="text-xs font-bold uppercase tracking-widest text-[#B45309]/70">Pass Rate</div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-[#B45309]/70">Exam Pass Rate (සමත් ප්‍රතිශතය)</div>
                 </div>
               </motion.div>
             </motion.div>
@@ -224,13 +224,13 @@ export default function AboutClient() {
                   <span className="text-[10px] font-bold uppercase tracking-widest text-text-muted">Live Now</span>
                 </div>
                 <p className="text-sm font-medium leading-relaxed italic text-slate-700">
-                  &quot;The level of mentorship here is unmatched in digital education.&quot;
+                  &quot;The teaching methodology is unmatched. සංකීර්ණ පාඩම් මතක තියාගන්න හරිම ලේසියි.&quot;
                 </p>
                 <div className="mt-3 flex items-center gap-2">
                   <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center">
                     <span className="text-[10px] font-bold text-primary">A</span>
                   </div>
-                  <p className="text-xs text-primary font-bold">Alex R., Alumnus</p>
+                  <p className="text-xs text-primary font-bold">Amasha R., Alumnus</p>
                 </div>
               </div>
             </motion.div>
@@ -251,19 +251,19 @@ export default function AboutClient() {
 
           <div className="relative z-10 max-w-3xl mx-auto">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6 text-white tracking-tight leading-tight">
-              Ready to decode <br className="hidden md:block" />
-              the economy?
+              Are you Ready? <br className="hidden md:block" />
+              විභාගයට ලෑස්තිද?
             </h2>
             <p className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-              Join our atelier and transform from a passive observer to an active architect of financial wisdom.
+              Join our class and transform your future. අදම අපගේ පංතියට සම්බන්ධ වී ආර්ථික විද්‍යාව විෂය ඉතා සරලව ඉගෙනගන්න.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <button className="w-full sm:w-auto bg-gold text-[#0F172A] px-10 py-4 rounded-xl font-bold text-base hover:bg-[#eac486] hover:scale-105 transition-all shadow-lg hover:shadow-gold/20">
-                Start Your Enrollment
+                දැන්ම ලියාපදිංචි වන්න (Enroll Now)
               </button>
               <button className="w-full sm:w-auto bg-white/5 backdrop-blur-md text-white border border-white/10 px-10 py-4 rounded-xl font-bold text-base hover:bg-white/10 transition-all">
-                Download Prospectus
+                වැඩි විස්තර ලබාගන්න (Get Details)
               </button>
             </div>
           </div>
