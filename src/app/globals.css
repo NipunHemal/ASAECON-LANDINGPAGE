@@ -81,4 +81,58 @@
   .skill-desc {
     @apply text-sm text-text-muted leading-relaxed;
   }
+
+  /* ── Classes page — course card ───────────────────────────── */
+  .course-card {
+    @apply bg-white rounded-2xl overflow-hidden border border-slate-100
+           flex flex-col transition-all duration-300
+           hover:shadow-xl hover:shadow-slate-200/60 hover:-translate-y-1;
+  }
+  .course-card-thumb {
+    @apply w-full h-44 object-cover transition-transform duration-500
+           group-hover:scale-105;
+  }
+  .course-card-body {
+    @apply flex flex-col flex-1 p-7;
+  }
+  .course-tag {
+    @apply text-[10px] font-bold tracking-[0.18em] uppercase text-primary mb-2;
+  }
+  .course-title {
+    @apply font-bold text-lg text-text-primary mb-3 group-hover:text-primary
+           transition-colors leading-snug;
+  }
+  .course-desc {
+    @apply text-sm text-text-muted leading-relaxed flex-1 mb-6;
+  }
+  .course-footer {
+    @apply flex items-center justify-between pt-5 border-t border-slate-100;
+  }
+  .course-meta {
+    @apply flex items-center gap-2 text-sm font-medium text-text-muted;
+  }
+  .btn-primary {
+    @apply bg-primary text-white px-5 py-2.5 rounded-xl font-bold text-sm
+           hover:bg-primary-dim active:scale-95 transition-all shadow-sm
+           shadow-primary/20;
+  }
+
+  /* ── Filter pill ──────────────────────────────────────────── */
+  .filter-pill {
+    @apply px-4 py-1.5 rounded-full text-sm font-semibold transition-colors
+           cursor-pointer border;
+  }
+  .filter-pill-active {
+    @apply bg-primary text-white border-primary;
+  }
+  .filter-pill-idle {
+    @apply bg-white text-text-muted border-slate-200
+           hover:border-primary/40 hover:text-primary;
+  }
+
+  /* ── Upsell banner ────────────────────────────────────────── */
+  .upsell-banner {
+    @apply bg-[#0F172A] rounded-3xl p-10 md:p-16 relative overflow-hidden
+           flex flex-col md:flex-row items-center justify-between gap-10;
+  }
 }
