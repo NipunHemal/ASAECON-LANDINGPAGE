@@ -10,6 +10,7 @@ import { Star, Clock, User, ArrowRight } from "lucide-react";
 
 /* ─── Types ─────────────────────────────────────────────────────────── */
 export interface CourseCardData {
+  id?: number;
   /** Lucide icon component */
   icon: ElementType;
   iconColor: string;

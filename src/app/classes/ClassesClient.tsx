@@ -248,9 +248,9 @@ export default function ClassesClient() {
               </button>
             </div>
           ) : (
-            filtered.map((course) => (
+            filtered.map((course: CourseEntry) => (
               <CourseCard
-                key={course.id || course.title}
+                key={course?.id || course?.title}
                 data={course}
                 variants={fadeUp}
               />
