@@ -1,10 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { PlayCircle } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { PlayCircle, X } from "lucide-react";
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleStartLearning = () => {
+    window.location.href = "https://web.asaecon.com";
+  };
+
   const fadeUp = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
@@ -31,26 +38,67 @@ export default function Hero() {
             ASA ECON — The Premium Econ Academy
           </motion.div>
 
-          <motion.h1 variants={fadeUp} className="text-5xl md:text-7xl font-bold tracking-tighter text-navy leading-[1.1]">
+          <motion.h1 variants={fadeUp} className="text-5xl md:text-6xl font-bold tracking-tighter text-navy leading-[1.1]">
             <span className="font-serif font-normal italic text-primary pr-3">ආස Econ</span>
             <br className="hidden md:block" />
             <span className="font-sans">ලංකාවේ ගුණාත්මකම Econ පංතිය</span>
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="text-lg md:text-xl text-slate-600 max-w-xl leading-relaxed">
+          <motion.p variants={fadeUp} className="text-sm md:text-lg text-slate-600 max-w-xl leading-relaxed">
             Master A/L Economics with Sri Lanka&apos;s leading educator. නවීන ආර්ථික විද්‍යාවේ සංකීර්ණතා ඉතා සරලව.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6 pt-4">
-            <button className="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg">
+            <button 
+              onClick={handleStartLearning}
+              className="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg cursor-pointer"
+            >
               Start Learning
             </button>
-            <button className="flex items-center gap-2 text-slate-700 font-medium hover:text-primary transition-colors group">
+            <button 
+              onClick={() => setIsModalOpen(true)}
+              className="flex items-center gap-2 text-slate-700 font-medium hover:text-primary transition-colors group cursor-pointer"
+            >
               <PlayCircle className="w-12 h-12 text-slate-200 group-hover:text-primary transition-colors" />
               <span>Watch how it works</span>
             </button>
           </motion.div>
         </motion.div>
+
+        {/* Video Modal Popup */}
+        <AnimatePresence>
+          {isModalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="relative w-full max-w-4xl aspect-video bg-black rounded-2xl overflow-hidden shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <button
+                  onClick={() => setIsModalOpen(false)}
+                  className="absolute top-4 right-4 z-10 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
+                <iframe
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
+                  title="Watch how it works"
+                  className="w-full h-full border-none"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Right Hero: Student Cutout */}
         <motion.div
