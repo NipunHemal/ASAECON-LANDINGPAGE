@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   Search, Clock, Brain, Leaf, Coins,
@@ -19,104 +19,7 @@ interface CourseEntry extends CourseCardData {
   MetaIcon: React.ElementType;
 }
 
-const COURSES: CourseEntry[] = [
-  {
-    icon: BarChart2,
-    iconColor: "#4C3BCF",
-    iconBg: "#EEF0FF",
-    title: "ක්ෂුද්‍ර ආර්ථික විද්‍යාව (Microeconomics)",
-    desc: "පාරිභෝගික හැසිරීම, වෙළඳපල ව්‍යුහය සහ සම්පත් බෙදාහැරීම පිළිබඳ සම්පූර්ණ න්‍යායාත්මක ආවරණය.",
-    tag: "Theory",
-    tagColor: "bg-indigo-50 text-indigo-700",
-    teacher: "A/L Econ Panel",
-    duration: "10 Weeks",
-    rating: 4.9,
-    reviews: 1243,
-    meta: "10 Weeks",
-    MetaIcon: Clock,
-    filter: "Micro (ක්ෂුද්‍ර)",
-  },
-  {
-    icon: Globe,
-    iconColor: "#0EA5E9",
-    iconBg: "#E0F4FF",
-    title: "සාර්ව ආර්ථික විද්‍යාව (Macroeconomics)",
-    desc: "ජාතික ආදායම, ආර්ථික වර්ධනය සහ රජයේ මූල්‍ය ප්‍රතිපත්ති පිළිබඳ ගැඹුරු අධ්‍යයනයක්.",
-    tag: "Theory",
-    tagColor: "bg-sky-50 text-sky-700",
-    teacher: "A/L Econ Panel",
-    duration: "12 Weeks",
-    rating: 4.8,
-    reviews: 987,
-    meta: "12 Weeks",
-    MetaIcon: Clock,
-    filter: "Macro (සාර්ව)",
-  },
-  {
-    icon: Coins,
-    iconColor: "#F59E0B",
-    iconBg: "#FEF3C7",
-    title: "මුදල් හා බැංකු ක්‍රමය (Money & Banking)",
-    desc: "ශ්‍රී ලංකාවේ මුදල් පද්ධතිය, මහ බැංකුවේ කාර්යයන් සහ පොලී අනුපාත පිළිබඳ පැහැදිලි අවබෝධයක්.",
-    tag: "Banking",
-    tagColor: "bg-amber-50 text-amber-700",
-    teacher: "A/L Econ Panel",
-    duration: "5 Weeks",
-    rating: 4.9,
-    reviews: 762,
-    meta: "Banking",
-    MetaIcon: Coins,
-    filter: "Banking (බැංකු)",
-  },
-  {
-    icon: Brain,
-    iconColor: "#7C5CFC",
-    iconBg: "#F0EDFF",
-    title: "සම්පූර්ණ පුනරීක්ෂණය (Full Revision)",
-    desc: "සියලුම න්‍යාය කොටස් ඉතා කෙටි කාලයකින් නැවත මතක් කරගැනීම සඳහා විශේෂයෙන් සැකසූ පුනරීක්ෂණ මාලාව.",
-    tag: "Revision",
-    tagColor: "bg-violet-50 text-violet-700",
-    teacher: "A/L Econ Panel",
-    duration: "Intensive",
-    rating: 4.9,
-    reviews: 634,
-    meta: "Intensive",
-    MetaIcon: Brain,
-    filter: "Revision (පුනරීක්ෂණ)",
-  },
-  {
-    icon: Leaf,
-    iconColor: "#10B981",
-    iconBg: "#D1FAE5",
-    title: "ජාත්‍යන්තර වෙළඳාම (International Trade)",
-    desc: "විදේශ විනිමය අනුපාත, ගෙවුම් ශේෂය සහ ජාත්‍යන්තර වෙළඳපල පිළිබඳ ප්‍රායෝගික සාකච්ඡා.",
-    tag: "Exam Prep",
-    tagColor: "bg-emerald-50 text-emerald-700",
-    teacher: "A/L Econ Panel",
-    duration: "4 Weeks",
-    rating: 4.8,
-    reviews: 521,
-    meta: "Exam Prep",
-    MetaIcon: Leaf,
-    filter: "Macro (සාර්ව)",
-  },
-  {
-    icon: TrendingUp,
-    iconColor: "#EF4444",
-    iconBg: "#FEE2E2",
-    title: "ප්‍රශ්න පත්‍ර සාකච්ඡාව (Past Papers)",
-    desc: "පසුගිය විභාග ප්‍රශ්න පත්‍ර සහ අනුමාන ප්‍රශ්න පත්‍ර ගැඹුරින් සාකච්ඡා කිරීමෙන් විභාගයට ඉහළම ලකුණක් ලබාගැනීමට.",
-    tag: "Advanced",
-    tagColor: "bg-red-50 text-red-700",
-    teacher: "A/L Econ Panel",
-    duration: "8 Papers",
-    rating: 4.9,
-    reviews: 890,
-    meta: "8 Papers",
-    MetaIcon: PieChart,
-    filter: "Past Papers (ප්‍රශ්න පත්‍ර)",
-  },
-];
+
 
 /* ─── Animation Variants ────────────────────────────────────────────── */
 const fadeUp = {
@@ -130,10 +33,84 @@ const stagger = {
 
 /* ─── Component ─────────────────────────────────────────────────────── */
 export default function ClassesClient() {
+  const [courses, setCourses] = useState<CourseEntry[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState("All Modules");
   const [query, setQuery] = useState("");
 
-  const filtered = COURSES.filter((c) => {
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        setIsLoading(true);
+        const response = await fetch("https://api.asaecon.com/api/courses");
+        const json = await response.json();
+
+        if (json.success) {
+          const mappedCourses: CourseEntry[] = json.data.map((c: any) => {
+            // Mapping logic for API data to UI components
+            // Since API doesn't provide UI specific icons/colors, we assign defaults or based on title
+            let icon = BarChart2;
+            let iconColor = "#4C3BCF";
+            let iconBg = "#EEF0FF";
+            let filter = "All Modules";
+
+            if (c.title.toLowerCase().includes("macro")) {
+              icon = Globe;
+              iconColor = "#0EA5E9";
+              iconBg = "#E0F4FF";
+              filter = "Macro (සාර්ව)";
+            } else if (c.title.toLowerCase().includes("micro")) {
+              icon = BarChart2;
+              iconColor = "#4C3BCF";
+              iconBg = "#EEF0FF";
+              filter = "Micro (ක්ෂුද්‍ර)";
+            } else if (c.title.toLowerCase().includes("bank")) {
+              icon = Coins;
+              iconColor = "#F59E0B";
+              iconBg = "#FEF3C7";
+              filter = "Banking (බැංකු)";
+            } else if (c.title.toLowerCase().includes("paper")) {
+              icon = TrendingUp;
+              iconColor = "#EF4444";
+              iconBg = "#FEE2E2";
+              filter = "Past Papers (ප්‍රශ්න පත්‍ර) ";
+            }
+
+            return {
+              id: c.id,
+              icon,
+              iconColor,
+              iconBg,
+              title: c.title,
+              desc: c.description || "Course details and comprehensive curriculum covering key economic concepts.",
+              tag: c.level || "Theory",
+              tagColor: "bg-indigo-50 text-indigo-700",
+              teacher: "A/L Econ Panel",
+              duration: c.totalDurationSec > 0 ? `${Math.ceil(c.totalDurationSec / 3600)} Hours` : "TBA",
+              rating: parseFloat(c.rating) || 0,
+              reviews: c.enrollmentCount || 0,
+              meta: c.price ? `${c.currency} ${c.price}` : "Free",
+              MetaIcon: Clock,
+              filter,
+            };
+          });
+          setCourses(mappedCourses);
+        } else {
+          setError(json.message || "Failed to fetch courses");
+        }
+      } catch (err) {
+        setError("Unable to connect to the course service.");
+        console.error("Fetch error:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchCourses();
+  }, []);
+
+  const filtered = courses.filter((c) => {
     const matchFilter = activeFilter === "All Modules" || c.filter === activeFilter;
     const matchQuery =
       c.title.toLowerCase().includes(query.toLowerCase()) ||
@@ -249,13 +226,36 @@ export default function ClassesClient() {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
         >
-          {filtered.map((course) => (
-            <CourseCard
-              key={course.title}
-              data={course}
-              variants={fadeUp}
-            />
-          ))}
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-100 h-[400px] animate-pulse">
+                <div className="h-36 bg-slate-100 rounded-t-2xl" />
+                <div className="p-7 space-y-4">
+                  <div className="h-4 bg-slate-100 rounded w-1/4" />
+                  <div className="h-6 bg-slate-100 rounded w-3/4" />
+                  <div className="h-20 bg-slate-100 rounded" />
+                </div>
+              </div>
+            ))
+          ) : error ? (
+            <div className="col-span-full py-24 text-center bg-red-50 rounded-3xl border border-red-100">
+              <p className="text-red-600 font-medium">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-4 text-sm font-bold text-red-700 underline"
+              >
+                Try Again
+              </button>
+            </div>
+          ) : (
+            filtered.map((course) => (
+              <CourseCard
+                key={course.id || course.title}
+                data={course}
+                variants={fadeUp}
+              />
+            ))
+          )}
 
           {/* Request a Topic — always shown */}
           <motion.article

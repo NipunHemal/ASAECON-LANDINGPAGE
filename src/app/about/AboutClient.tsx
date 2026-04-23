@@ -102,10 +102,12 @@ export default function AboutClient() {
           >
             <div className="relative w-full max-w-md aspect-square bg-primary/5 rounded-[3rem] overflow-hidden">
               {/* Hero Image */}
-              <img
-                src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1200&auto=format&fit=crop"
+              <Image
+                src="/teacher/teacher_2.png"
                 alt="Students collaborating in modern university"
-                className="absolute inset-0 w-full h-full object-cover grayscale mix-blend-multiply opacity-80"
+                width={1920}
+                height={1280}
+                className="absolute inset-0 w-full h-full grayscale mix-blend-multiply opacity-80"
               />
             </div>
 
@@ -116,7 +118,7 @@ export default function AboutClient() {
       </section>
 
       {/* ─── Tutors Section (Asymmetric Bento) ────────────────────────── */}
-      <section className="bg-surface-muted py-24 md:py-32">
+      <section className="bg-surface-muted py-24 md:py-32 hidden">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8"
@@ -167,7 +169,7 @@ export default function AboutClient() {
       </section>
 
       {/* ─── Stats Section: Editorial Layering ─────────────────────────── */}
-      <section className="py-24 md:py-32 overflow-hidden relative bg-white">
+      <section className="pb-24 md:pb-32 overflow-hidden relative bg-white">
         {/* Decorative background element */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-surface-muted -z-10 translate-x-1/2 rounded-full blur-3xl opacity-50 pointer-events-none" />
 
@@ -210,9 +212,11 @@ export default function AboutClient() {
               {/* Impact Illustration */}
               <div className="bg-primary p-1.5 rounded-[2.5rem] shadow-2xl shadow-primary/10 overflow-hidden transform md:rotate-2 md:scale-95 transition-transform hover:rotate-0 hover:scale-100 duration-500">
                 <div className="w-full aspect-[4/3] rounded-[2.2rem] overflow-hidden bg-slate-200">
-                  <img
-                    src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=1200&auto=format&fit=crop"
+                  <Image
+                    src="/teacher/teacher-class.jpeg"
                     alt="Students in a modern seminar"
+                    width={500}
+                    height={500}
                     className="w-full h-full object-cover"
                   />
                 </div>

@@ -131,7 +131,7 @@ export default function CourseCard({ data, variants, className = "" }: CourseCar
               hover:bg-[#3d2fb5] hover:shadow-lg hover:shadow-[#4C3BCF]/25
               transition-all group/btn"
           >
-            පංතියට එක්වන්න
+            Enroll Now
             <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
           </button>
         </div>

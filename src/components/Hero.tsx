@@ -49,13 +49,13 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-6 pt-4">
-            <button 
+            <button
               onClick={handleStartLearning}
               className="bg-primary text-white px-8 py-3.5 rounded-full font-medium hover:bg-primary/90 transition-all shadow-md hover:shadow-lg cursor-pointer"
             >
               Start Learning
             </button>
-            <button 
+            <button
               onClick={() => setIsModalOpen(true)}
               className="flex items-center gap-2 text-slate-700 font-medium hover:text-primary transition-colors group cursor-pointer"
             >
@@ -112,7 +112,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-50 to-primary/5 rounded-full blur-3xl -z-10 transform scale-90"></div>
 
             <Image
-              src="/student-hero.png"
+              src="/teacher/teacher-hero.png"
               alt="Student learning"
               fill
               className="object-contain z-10 scale-125"
