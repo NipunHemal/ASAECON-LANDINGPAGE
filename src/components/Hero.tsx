@@ -112,7 +112,7 @@ export default function Hero() {
             <div className="absolute inset-0 bg-gradient-to-tr from-slate-50 to-primary/5 rounded-full blur-3xl -z-10 transform scale-90"></div>
 
             <Image
-              src="/teacher/teacher-hero.png"
+              src="/teacher/teacher-hero-2.png"
               alt="Student learning"
               fill
               className="object-contain z-10 scale-125"
