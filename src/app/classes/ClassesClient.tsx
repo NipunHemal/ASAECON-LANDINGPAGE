@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import {
-  Search, Clock, Brain, Leaf, Coins,
+  Search, Clock, Coins,
   TrendingUp, Sparkles, ArrowRight, Users, BarChart2, Globe, PieChart
 } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -11,7 +11,8 @@ import Footer from "@/components/Footer";
 import CourseCard, { type CourseCardData } from "@/components/CourseCard";
 
 /* ─── Data ─────────────────────────────────────────────────────────── */
-const FILTERS = ["All Modules", "Micro (ක්ෂුද්‍ර)", "Macro (සාර්ව)", "Banking (බැංකු)", "Revision (පුනරීක්ෂණ)", "Past Papers (ප්‍රශ්න පත්‍ර)"];
+const FILTERS = [];
+// const FILTERS = ["All Modules", "Micro (ක්ෂුද්‍ර)", "Macro (සාර්ව)", "Banking (බැංකු)", "Revision (පුනරීක්ෂණ)", "Past Papers (ප්‍රශ්න පත්‍ර)"];
 
 interface CourseEntry extends CourseCardData {
   filter: string;
@@ -38,56 +39,81 @@ export default function ClassesClient() {
   const [error, setError] = useState<string | null>(null);
   const [activeFilter, setActiveFilter] = useState("All Modules");
   const [query, setQuery] = useState("");
+  const [publishType, setPublishType] = useState<"" | "FREE" | "PAID">("");
 
   useEffect(() => {
     const fetchCourses = async () => {
       try {
         setIsLoading(true);
-        const response = await fetch("https://api.asaecon.com/api/courses");
+        setError(null);
+
+        // Build search params based on query
+        // Using localhost as requested (correcting typo 'localost')
+        const params = new URLSearchParams({
+          limit: "20",
+          page: "1",
+          search: query,
+          ...(publishType ? { publishType } : {}),
+        });
+
+        const response = await fetch(`https://api.asaecon.com/api/courses?${params.toString()}`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP Error: ${response.status}`);
+        }
+
         const json = await response.json();
+        console.log("Classes API Response:", json);
 
         if (json.success) {
           const mappedCourses: CourseEntry[] = json.data.map((c: any) => {
             // Mapping logic for API data to UI components
-            // Since API doesn't provide UI specific icons/colors, we assign defaults or based on title
             let icon = BarChart2;
             let iconColor = "#4C3BCF";
             let iconBg = "#EEF0FF";
             let filter = "All Modules";
 
-            if (c.title.toLowerCase().includes("macro")) {
+            const titleLower = (c.title || "").toLowerCase();
+            if (titleLower.includes("macro") || titleLower.includes("සාර්ව")) {
               icon = Globe;
               iconColor = "#0EA5E9";
               iconBg = "#E0F4FF";
               filter = "Macro (සාර්ව)";
-            } else if (c.title.toLowerCase().includes("micro")) {
+            } else if (titleLower.includes("micro") || titleLower.includes("ක්ෂුද්‍ර")) {
               icon = BarChart2;
               iconColor = "#4C3BCF";
               iconBg = "#EEF0FF";
               filter = "Micro (ක්ෂුද්‍ර)";
-            } else if (c.title.toLowerCase().includes("bank")) {
+            } else if (titleLower.includes("bank") || titleLower.includes("බැංකු")) {
               icon = Coins;
               iconColor = "#F59E0B";
               iconBg = "#FEF3C7";
               filter = "Banking (බැංකු)";
-            } else if (c.title.toLowerCase().includes("paper")) {
+            } else if (titleLower.includes("paper") || titleLower.includes("ප්‍රශ්න")) {
               icon = TrendingUp;
               iconColor = "#EF4444";
               iconBg = "#FEE2E2";
-              filter = "Past Papers (ප්‍රශ්න පත්‍ර) ";
+              filter = "Past Papers (ප්‍රශ්න පත්‍ර)";
+            } else if (titleLower.includes("revision") || titleLower.includes("පුනරීක්ෂණ")) {
+              icon = Sparkles;
+              iconColor = "#7C5CFC";
+              iconBg = "#F0EDFF";
+              filter = "Revision (පුනරීක්ෂණ)";
             }
 
             return {
               id: c.id,
+              slug: c.slug,
+              thumbnailUrl: c.thumbnailUrl,
               icon,
               iconColor,
               iconBg,
-              title: c.title,
+              title: c.title || "Untitled Course",
               desc: c.description || "Course details and comprehensive curriculum covering key economic concepts.",
-              tag: c.level || "Theory",
+              tag: c.level === "ALL_LEVELS" ? "Theory" : (c.level || "Theory"),
               tagColor: "bg-indigo-50 text-indigo-700",
               teacher: "A/L Econ Panel",
-              duration: c.totalDurationSec > 0 ? `${Math.ceil(c.totalDurationSec / 3600)} Hours` : "TBA",
+              duration: c.totalDurationSec > 0 ? `${Math.ceil(c.totalDurationSec / 3600)} Hours` : "12+ Hours",
               rating: parseFloat(c.rating) || 0,
               reviews: c.enrollmentCount || 0,
               meta: c.price ? `${c.currency} ${c.price}` : "Free",
@@ -100,23 +126,32 @@ export default function ClassesClient() {
           setError(json.message || "Failed to fetch courses");
         }
       } catch (err) {
-        setError("Unable to connect to the course service.");
+        setError("Unable to connect to the course service. Please check your internet connection.");
         console.error("Fetch error:", err);
       } finally {
         setIsLoading(false);
       }
     };
 
-    fetchCourses();
-  }, []);
+    // Use a small timeout to debounce search typing
+    const timer = setTimeout(() => {
+      fetchCourses();
+    }, 400);
+
+    return () => clearTimeout(timer);
+  }, [query, publishType]);
 
   const filtered = courses.filter((c) => {
     const matchFilter = activeFilter === "All Modules" || c.filter === activeFilter;
     const matchQuery =
-      c.title.toLowerCase().includes(query.toLowerCase()) ||
-      (c.desc ?? "").toLowerCase().includes(query.toLowerCase());
+      (c.title || "").toLowerCase().includes((query || "").toLowerCase()) ||
+      (c.desc || "").toLowerCase().includes((query || "").toLowerCase());
     return matchFilter && matchQuery;
   });
+
+  console.log(filtered)
+
+  console.log("Courses Count:", courses.length, "Filtered Count:", filtered.length, "Active Filter:", activeFilter);
 
   return (
     <main className="min-h-screen bg-surface-muted font-sans">
@@ -198,14 +233,16 @@ export default function ClassesClient() {
           <div className="flex flex-wrap items-center gap-3">
             <h2 className="text-xl font-bold text-text-primary mr-2">Module Catalog</h2>
             <div className="hidden md:block h-6 w-px bg-slate-200" />
-            <div className="flex flex-wrap gap-2">
-              {FILTERS.map((f) => (
+            {/* FREE / PAID filter pills */}
+            <div className="flex gap-2">
+              {(["", "FREE", "PAID"] as const).map((type) => (
                 <button
-                  key={f}
-                  onClick={() => setActiveFilter(f)}
-                  className={`filter-pill ${activeFilter === f ? "filter-pill-active" : "filter-pill-idle"}`}
+                  key={type || "all"}
+                  onClick={() => setPublishType(type)}
+                  className={`filter-pill ${publishType === type ? "filter-pill-active" : "filter-pill-idle"
+                    }`}
                 >
-                  {f}
+                  {type === "" ? "All" : type === "FREE" ? "🆓 Free" : "💎 Paid"}
                 </button>
               ))}
             </div>
@@ -224,12 +261,12 @@ export default function ClassesClient() {
         {/* ── Course Cards Grid using shared CourseCard ─────────────── */}
         <motion.section
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-24"
-          initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
+          initial="hidden" animate="visible" variants={stagger}
         >
           {isLoading ? (
             Array.from({ length: 6 }).map((_, i) => (
               <div key={i} className="bg-white rounded-2xl border border-slate-100 h-[400px] animate-pulse">
-                <div className="h-36 bg-slate-100 rounded-t-2xl" />
+                <div className="h-44 bg-slate-100 rounded-t-2xl" />
                 <div className="p-7 space-y-4">
                   <div className="h-4 bg-slate-100 rounded w-1/4" />
                   <div className="h-6 bg-slate-100 rounded w-3/4" />
@@ -247,6 +284,14 @@ export default function ClassesClient() {
                 Try Again
               </button>
             </div>
+          ) : filtered.length === 0 ? (
+            <div className="col-span-full py-24 text-center text-text-muted">
+              <Search className="w-10 h-10 mx-auto mb-4 opacity-30" />
+              <p className="text-lg font-medium">No modules match your search.</p>
+              <button className="mt-3 text-primary font-semibold text-sm hover:underline" onClick={() => { setQuery(""); setActiveFilter("All Modules"); }}>
+                Clear filters
+              </button>
+            </div>
           ) : (
             filtered.map((course: CourseEntry) => (
               <CourseCard
@@ -257,32 +302,24 @@ export default function ClassesClient() {
             ))
           )}
 
-          {/* Request a Topic — always shown */}
-          <motion.article
-            variants={fadeUp}
-            className="bg-white rounded-2xl border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-12 text-center hover:border-primary/40 transition-all cursor-default group"
-          >
-            <div className="w-14 h-14 bg-primary/8 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
-              <Sparkles className="w-7 h-7 text-primary" />
-            </div>
-            <h3 className="font-bold text-lg text-text-primary mb-3">Cant find a topic?</h3>
-            <p className="text-sm text-text-muted leading-relaxed mb-6">
-              ඔබට අවශ්‍ය අමතර පාඩමක් හෝ Revision එකක් ගැන අපට දන්වන්න. (Request a new module).
-            </p>
-            <button className="text-primary font-bold text-sm hover:underline flex items-center gap-1 group/btn">
-              Submit Request
-              <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </button>
-          </motion.article>
-
-          {filtered.length === 0 && (
-            <div className="col-span-full py-24 text-center text-text-muted">
-              <Search className="w-10 h-10 mx-auto mb-4 opacity-30" />
-              <p className="text-lg font-medium">No modules match your search.</p>
-              <button className="mt-3 text-primary font-semibold text-sm hover:underline" onClick={() => { setQuery(""); setActiveFilter("All Modules"); }}>
-                Clear filters
+          {/* Request a Topic — always shown when not loading/error */}
+          {!isLoading && !error && (
+            <motion.article
+              variants={fadeUp}
+              className="bg-white rounded-2xl border-2 border-dashed border-primary/20 flex flex-col items-center justify-center p-12 text-center hover:border-primary/40 transition-all cursor-default group"
+            >
+              <div className="w-14 h-14 bg-primary/8 rounded-full flex items-center justify-center mb-5 group-hover:bg-primary/15 transition-colors">
+                <Sparkles className="w-7 h-7 text-primary" />
+              </div>
+              <h3 className="font-bold text-lg text-text-primary mb-3">Cant find a topic?</h3>
+              <p className="text-sm text-text-muted leading-relaxed mb-6">
+                ඔබට අවශ්‍ය අමතර පාඩමක් හෝ Revision එකක් ගැන අපට දන්වන්න. (Request a new module).
+              </p>
+              <button className="text-primary font-bold text-sm hover:underline flex items-center gap-1 group/btn">
+                Submit Request
+                <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </button>
-            </div>
+            </motion.article>
           )}
         </motion.section>
 

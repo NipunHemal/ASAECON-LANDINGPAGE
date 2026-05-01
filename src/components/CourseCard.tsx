@@ -10,7 +10,9 @@ import { Star, Clock, User, ArrowRight } from "lucide-react";
 
 /* ─── Types ─────────────────────────────────────────────────────────── */
 export interface CourseCardData {
-  id?: number;
+  id?: string | number;
+  slug?: string;
+  thumbnailUrl?: string;
   /** Lucide icon component */
   icon: ElementType;
   iconColor: string;
@@ -58,7 +60,13 @@ interface CourseCardProps {
 
 /* ─── Component ──────────────────────────────────────────────────────── */
 export default function CourseCard({ data, variants, className = "" }: CourseCardProps) {
-  const Icon = data.icon;
+  const Icon = data?.icon;
+
+  const handleEnroll = () => {
+    if (data?.slug) {
+      window.location.href = `https://web.asaecon.com/dashboard/courses/${data?.slug}`;
+    }
+  };
 
   return (
     <motion.article
@@ -69,57 +77,65 @@ export default function CourseCard({ data, variants, className = "" }: CourseCar
     >
       {/* ── Thumbnail ── */}
       <div
-        className="w-full h-36 flex items-center justify-center flex-shrink-0 overflow-hidden"
-        style={{ backgroundColor: data.iconBg }}
+        className="w-full h-44 flex items-center justify-center flex-shrink-0 overflow-hidden relative"
+        style={{ backgroundColor: data?.iconBg }}
       >
-        <Icon
-          className="w-14 h-14 opacity-75 transition-transform duration-500 group-hover:scale-110"
-          style={{ color: data.iconColor }}
-          strokeWidth={1.3}
-        />
+        {data?.thumbnailUrl ? (
+          <img
+            src={data?.thumbnailUrl}
+            alt={data?.title}
+            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+        ) : (
+          <Icon
+            className="w-14 h-14 opacity-75 transition-transform duration-500 group-hover:scale-110"
+            style={{ color: data?.iconColor }}
+            strokeWidth={1.3}
+          />
+        )}
       </div>
 
       {/* ── Body ── */}
       <div className="flex flex-col flex-1 p-7 gap-3">
         {/* Tag */}
-        <span className={`self-start text-[10px] font-bold px-3 py-1 rounded-full tracking-wide ${data.tagColor}`}>
-          {data.tag}
+        <span className={`self-start text-[10px] font-bold px-3 py-1 rounded-full tracking-wide ${data?.tagColor}`}>
+          {data?.tag}
         </span>
 
         {/* Title */}
         <h3 className="font-bold text-base text-[#0F172A] leading-snug tracking-tight group-hover:text-[#4C3BCF] transition-colors">
-          {data.title}
+          {data?.title}
         </h3>
 
         {/* Description (optional) */}
-        {data.desc && (
-          <p className="text-sm text-[#64748B] leading-relaxed flex-1">{data.desc}</p>
+        {data?.desc && (
+          <p className="text-sm text-[#64748B] leading-relaxed flex-1">{data?.desc}</p>
         )}
 
         {/* Teacher + Duration meta (optional) */}
-        {(data.teacher || data.duration) && (
+        {(data?.teacher || data?.duration) && (
           <div className="flex items-center justify-between text-xs text-slate-400 mt-1">
-            {data.teacher && (
+            {data?.teacher && (
               <span className="flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5 shrink-0" />
-                <span className="truncate max-w-[120px]">{data.teacher}</span>
+                <span className="truncate max-w-[120px]">{data?.teacher}</span>
               </span>
             )}
-            {data.duration && (
+            {data?.duration && (
               <span className="flex items-center gap-1.5 shrink-0 ml-auto">
                 <Clock className="w-3.5 h-3.5" />
-                {data.duration}
+                {data?.duration}
               </span>
             )}
           </div>
         )}
 
         {/* Rating row (optional) */}
-        {data.rating !== undefined && (
+        {data?.rating !== undefined && (
           <div className="flex items-center justify-between">
-            <StarRating rating={data.rating} />
-            {data.reviews !== undefined && (
-              <span className="text-xs text-slate-400">({data.reviews.toLocaleString()})</span>
+            <StarRating rating={data?.rating} />
+            {data?.reviews !== undefined && (
+              <span className="text-xs text-slate-400">({data?.reviews.toLocaleString()})</span>
             )}
           </div>
         )}
@@ -127,6 +143,7 @@ export default function CourseCard({ data, variants, className = "" }: CourseCar
         {/* Divider before CTA */}
         <div className="border-t border-slate-100 mt-auto pt-4">
           <button
+            onClick={handleEnroll}
             className="w-full flex items-center justify-center gap-2 bg-[#4C3BCF] text-white
               font-bold py-3 rounded-xl text-sm
               hover:bg-[#3d2fb5] hover:shadow-lg hover:shadow-[#4C3BCF]/25

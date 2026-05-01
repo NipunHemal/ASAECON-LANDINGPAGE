@@ -1,83 +1,9 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, BarChart2, Globe, TrendingUp, DollarSign, BookOpen, PieChart } from "lucide-react";
+import { ArrowRight, BarChart2, Globe, TrendingUp, Coins, Sparkles, PieChart } from "lucide-react";
 import CourseCard, { type CourseCardData } from "@/components/CourseCard";
-
-const classes: CourseCardData[] = [
-  {
-    icon: BarChart2,
-    iconColor: "#4C3BCF",
-    iconBg: "#EEF0FF",
-    title: "Macroeconomic Theory 101",
-    teacher: "Dr. Elena Vance",
-    duration: "18 hours",
-    rating: 4.9,
-    reviews: 1243,
-    tag: "Beginner",
-    tagColor: "bg-emerald-50 text-emerald-700",
-  },
-  {
-    icon: Globe,
-    iconColor: "#0EA5E9",
-    iconBg: "#E0F4FF",
-    title: "Foundations of Financial Markets",
-    teacher: "Prof. James Holloway",
-    duration: "22 hours",
-    rating: 4.8,
-    reviews: 987,
-    tag: "Intermediate",
-    tagColor: "bg-sky-50 text-sky-700",
-  },
-  {
-    icon: TrendingUp,
-    iconColor: "#7C5CFC",
-    iconBg: "#F0EDFF",
-    title: "Econometrics for Modern Insights",
-    teacher: "Dr. Priya Nair",
-    duration: "26 hours",
-    rating: 4.9,
-    reviews: 762,
-    tag: "Advanced",
-    tagColor: "bg-violet-50 text-violet-700",
-  },
-  {
-    icon: DollarSign,
-    iconColor: "#F59E0B",
-    iconBg: "#FEF3C7",
-    title: "Monetary Policy & Central Banking",
-    teacher: "Prof. Alan Chen",
-    duration: "14 hours",
-    rating: 4.7,
-    reviews: 634,
-    tag: "Intermediate",
-    tagColor: "bg-amber-50 text-amber-700",
-  },
-  {
-    icon: BookOpen,
-    iconColor: "#10B981",
-    iconBg: "#D1FAE5",
-    title: "Development Economics",
-    teacher: "Dr. Sasha Williams",
-    duration: "20 hours",
-    rating: 4.8,
-    reviews: 521,
-    tag: "Beginner",
-    tagColor: "bg-emerald-50 text-emerald-700",
-  },
-  {
-    icon: PieChart,
-    iconColor: "#EF4444",
-    iconBg: "#FEE2E2",
-    title: "Game Theory & Strategic Thinking",
-    teacher: "Prof. Marco Silva",
-    duration: "16 hours",
-    rating: 4.9,
-    reviews: 890,
-    tag: "Advanced",
-    tagColor: "bg-red-50 text-red-700",
-  },
-];
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -89,6 +15,85 @@ const stagger = {
 };
 
 export default function PopularClasses() {
+  const [courses, setCourses] = useState<CourseCardData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPopularCourses = async () => {
+      try {
+        setIsLoading(true);
+        setError(null);
+        // Using https as requested and required for most browsers
+        const response = await fetch("https://api.asaecon.com/api/courses?limit=6&page=1");
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const json = await response.json();
+        console.log("Popular Classes API Response:", json);
+
+        if (json.success) {
+          const mapped = json.data.map((c: any) => {
+            let icon = BarChart2;
+            let iconColor = "#4C3BCF";
+            let iconBg = "#EEF0FF";
+
+            const titleLower = (c.title || "").toLowerCase();
+            if (titleLower.includes("macro") || titleLower.includes("සාර්ව")) {
+              icon = Globe;
+              iconColor = "#0EA5E9";
+              iconBg = "#E0F4FF";
+            } else if (titleLower.includes("micro") || titleLower.includes("ක්ෂුද්‍ර")) {
+              icon = BarChart2;
+              iconColor = "#4C3BCF";
+              iconBg = "#EEF0FF";
+            } else if (titleLower.includes("bank") || titleLower.includes("බැංකු")) {
+              icon = Coins;
+              iconColor = "#F59E0B";
+              iconBg = "#FEF3C7";
+            } else if (titleLower.includes("paper") || titleLower.includes("ප්‍රශ්න")) {
+              icon = TrendingUp;
+              iconColor = "#EF4444";
+              iconBg = "#FEE2E2";
+            } else if (titleLower.includes("revision") || titleLower.includes("පුනරීක්ෂණ")) {
+              icon = Sparkles;
+              iconColor = "#7C5CFC";
+              iconBg = "#F0EDFF";
+            }
+
+            return {
+              id: c.id,
+              slug: c.slug,
+              thumbnailUrl: c.thumbnailUrl,
+              icon,
+              iconColor,
+              iconBg,
+              title: c.title || "Untitled Course",
+              teacher: "A/L Econ Panel",
+              duration: c.totalDurationSec > 0 ? `${Math.ceil(c.totalDurationSec / 3600)} Hours` : "12+ Hours",
+              rating: parseFloat(c.rating) || 4.8,
+              reviews: c.enrollmentCount || 0,
+              tag: c.level === "ALL_LEVELS" ? "Theory" : (c.level || "Theory"),
+              tagColor: "bg-emerald-50 text-emerald-700",
+            };
+          });
+          setCourses(mapped);
+        } else {
+          setError(json.message || "Failed to load courses");
+        }
+      } catch (err) {
+        console.error("Failed to fetch popular courses:", err);
+        setError("Connection failed. Please check if the API is reachable.");
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPopularCourses();
+  }, []);
+
   return (
     <section className="bg-[#F9FAFB] py-10 md:py-16">
       <div className="max-w-7xl mx-auto px-6">
@@ -112,23 +117,29 @@ export default function PopularClasses() {
           </motion.p>
         </motion.div>
 
-        {/* Cards Grid:
-            Mobile  → 1 col, first 3 visible (cards 4-6 hidden)
-            Tablet  → 2 cols, all 6 visible
-            Desktop → 3 cols, all 6 visible
-        */}
+        {/* Cards Grid */}
         <motion.div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
           initial="hidden" whileInView="visible" viewport={{ once: true }} variants={stagger}
         >
-          {classes.map((cls, i) => (
-            <CourseCard
-              key={i}
-              data={cls}
-              variants={fadeUp}
-              className={i >= 3 ? "hidden sm:flex" : "flex"}
-            />
-          ))}
+          {isLoading ? (
+            Array.from({ length: 6 }).map((_, i) => (
+              <div key={i} className="bg-white rounded-2xl border border-slate-100 h-[360px] animate-pulse" />
+            ))
+          ) : error ? (
+            <div className="col-span-full py-12 text-center bg-red-50 rounded-2xl border border-red-100">
+              <p className="text-red-600 font-medium">{error}</p>
+            </div>
+          ) : (
+            courses.map((cls, i) => (
+              <CourseCard
+                key={cls.id || i}
+                data={cls}
+                variants={fadeUp}
+                className={i >= 3 ? "hidden sm:flex" : "flex"}
+              />
+            ))
+          )}
         </motion.div>
 
         {/* View All Link */}
@@ -149,3 +160,4 @@ export default function PopularClasses() {
     </section>
   );
 }
+
